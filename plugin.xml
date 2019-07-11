@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin xmlns:android="http://schemas.android.com/apk/res/android"
+    id="JGJVerification-cordova-plugin" version="1.0.0"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0">
+    <name>JVerification-cordova-plugin</name>
+
+    <!-- dependencies -->
+    <dependency id="cordova-plugin-device" />
+    <dependency id="cordova-plugin-jcore"/>
+
+    <preference name="APP_KEY" />
+    <preference name="CHANNEL" default="developer-default" />
+
+
+    <js-module name="JGJVerificationPlugin" src="www/JG-JVerification-cordova-plugin.js">
+        <clobbers target="JGJVerificationPlugin" />
+    </js-module>
+
+
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="JGJVerificationPlugin">
+                <param name="android-package"
+                    value="cn.jiguang.cordova.verification.JVerificationPlugin" />
+            </feature>
+        </config-file>
+
+
+        <config-file parent="/manifest" target="AndroidManifest.xml">
+            <!-- Required  -->
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+            <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+            <!-- Optional -->
+            <uses-permission
+                android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
+            <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+            <uses-permission android:name="android.permission.GET_TASKS" />
+            <uses-permission android:name="android.permission.VIBRATE" />
+            <uses-permission android:name="android.permission.WAKE_LOCK" />
+        </config-file>
+
+
+        <config-file parent="/manifest/application" target="AndroidManifest.xml">
+
+            <!-- since 2.0.0 optional 可选项，使用一键登录功能必须添加  -->
+            <!-- since 2.1.1 optional 可选项，通过screenOrientation设置授权页面横竖屏展示  -->
+            <activity android:name="com.cmic.sso.sdk.activity.OAuthActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:launchMode="singleTop" android:screenOrientation="portrait"></activity>
+            <!-- since 2.0.0 optional 可选项，使用一键登录功能必须添加  -->
+            <!-- since 2.1.1 optional 可选项，通过screenOrientation设置授权页面横竖屏展示  -->
+            <activity android:name="com.cmic.sso.sdk.activity.LoginAuthActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:launchMode="singleTop"
+                android:screenOrientation="portrait" android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
+            <!-- since 2.0.0 optional 可选项，使用一键登录功能必须添加  -->
+            <!-- since 2.1.1 optional 可选项，通过screenOrientation设置授权页面横竖屏展示  -->
+            <activity android:name="cn.jiguang.verifysdk.CtLoginActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:launchMode="singleTop"
+                android:screenOrientation="portrait" android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
+
+            <!-- Required -->
+            <meta-data android:name="JPUSH_APPKEY" android:value="$APP_KEY" />
+            <meta-data android:name="JPUSH_CHANNEL" android:value="$CHANNEL" />
+
+        </config-file>
+
+
+        <lib-file src="src/android/libs/jverification-android-release-2.3.2.jar" />
+        <source-file src="src/android/cn/jiguang/cordova/verification/JVerificationPlugin.java"
+            target-dir="src/cn/jiguang/cordova/verification/" />
+            
+        <resource-file src="src/android/res/anim/umcsdk_anim_loading.xml"  target="res/anim/umcsdk_anim_loading.xml"/>
+
+        <resource-file src="src/android/res/drawable/umcsdk_get_smscode_btn_bg.xml"  target="res/drawable/umcsdk_get_smscode_btn_bg.xml"/>
+        <resource-file src="src/android/res/drawable/umcsdk_login_btn_bg.xml"  target="res/drawable/umcsdk_login_btn_bg.xml"/>
+
+        <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_check_image.png"  target="res/drawable-xxhdpi/umcsdk_check_image.png"/>
+        <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_exception_bg.9.png"  target="res/drawable-xxhdpi/umcsdk_exception_bg.9.png"/>
+        <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_exception_icon.png"  target="res/drawable-xxhdpi/umcsdk_exception_icon.png"/>
+        <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_load_complete_w.png"  target="res/drawable-xxhdpi/umcsdk_load_complete_w.png"/>
+        <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_load_dot_white.png"  target="res/drawable-xxhdpi/umcsdk_load_dot_white.png"/>
+        <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_login_btn_normal.png"  target="res/drawable-xxhdpi/umcsdk_login_btn_normal.png"/>
+        <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_login_btn_press.png"  target="res/drawable-xxhdpi/umcsdk_login_btn_press.png"/>
+        <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_login_btn_unable.png"  target="res/drawable-xxhdpi/umcsdk_login_btn_unable.png"/>
+        <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_mobile_logo.png"  target="res/drawable-xxhdpi/umcsdk_mobile_logo.png"/>
+        <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_return_bg.png"  target="res/drawable-xxhdpi/umcsdk_return_bg.png"/>
+        <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_shape_input.png"  target="res/drawable-xxhdpi/umcsdk_shape_input.png"/>
+        <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_sms_normal.png"  target="res/drawable-xxhdpi/umcsdk_sms_normal.png"/>
+        <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_sms_press.png"  target="res/drawable-xxhdpi/umcsdk_sms_press.png"/>
+        <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_sms_unable.png"  target="res/drawable-xxhdpi/umcsdk_sms_unable.png"/>
+        <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_toast_bg.png"  target="res/drawable-xxhdpi/umcsdk_toast_bg.png"/>
+        <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_uncheck_image.png"  target="res/drawable-xxhdpi/umcsdk_uncheck_image.png"/>
+    </platform>
+</plugin>
