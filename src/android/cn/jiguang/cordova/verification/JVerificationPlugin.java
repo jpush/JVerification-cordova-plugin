@@ -39,7 +39,7 @@ public class JVerificationPlugin extends CordovaPlugin {
                     Method method = JVerificationPlugin.class.getDeclaredMethod(action, JSONArray.class,
                             CallbackContext.class);
                     method.invoke(JVerificationPlugin.this, args, callbackContext);
-                } catch (Exception e) {
+                } catch (Throwable e) {
                     e.printStackTrace();
                     Log.e(TAG, e.toString());
                 }
