@@ -149,7 +149,7 @@ public class JVerificationPlugin extends CordovaPlugin {
         });
     }
 
-    void dismissLoginAuthActivity(JSONArray data, CallbackContext callbackContext) {
+    void dismissLoginAuth(JSONArray data, CallbackContext callbackContext) {
         JVerificationInterface.dismissLoginAuthActivity();
     }
 

@@ -96,8 +96,8 @@ var JMessagePlugin = {
   /**
    * 关闭登录授权页，如果当前授权正在进行，则loginAuth接口会立即触发6002取消回调。
    */
-  dismissLoginAuthActivity: function () {
-    exec(null, null, PLUGIN_NAME, 'dismissLoginAuthActivity', []);
+  dismissLoginAuth: function () {
+    exec(null, null, PLUGIN_NAME, 'dismissLoginAuth', []);
   },
 
   /**

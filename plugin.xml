@@ -17,6 +17,54 @@
     </js-module>
 
 
+<platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="JGJVerificationPlugin">
+                <param name="ios-package" value="JVerificationPlugin"/>
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/JVERIFICATIONService.h"/>
+        <header-file src="src/ios/JVerificationPlugin.h"/>
+        <source-file src="src/ios/JVerificationPlugin.m"/>
+        <source-file src="src/ios/jverification-ios-2.3.2.a" framework="true" />
+
+        <resource-file src="src/ios/JVerificationConfig.plist" />
+        <resource-file src="src/ios/JVerificationResource.bundle" />
+
+        <framework src="src/ios/TYRZSDK.framework" custom="true" />
+        <framework src="src/ios/EAccountApiSDK.framework" custom="true" />
+        <framework src="src/ios/account_verify_sdk_core.framework" custom="true" />
+        <framework src="src/ios/account_login_sdk_noui_core.framework" custom="true" />
+
+        <framework src="AdSupport.framework" weak="true" />
+        <framework src="CoreLocation.framework" weak="true" />
+        <framework src="CFNetwork.framework" weak="true" />
+        <framework src="CoreFoundation.framework" weak="true" />
+        <framework src="CoreTelephony.framework" weak="true" />
+        <framework src="SystemConfiguration.framework" weak="true" />
+        <framework src="Security.framework" weak="true" />
+        <framework src="CoreGraphics.framework" weak="true" />
+        <framework src="MobileCoreServices.framework" weak="true" />
+        <framework src="account_verify_sdk_core.framework" weak="true" />
+        <framework src="TYRZSDK.framework" weak="true" />
+        <framework src="account_login_sdk_noui_core.framework" weak="true" />
+        <framework src="EAccountApiSDK.framework" weak="true" />
+
+        <framework src="libresolv.tbd" />
+        <framework src="libz.tbd" />
+        <framework src="libc++.1.tbd" />
+        <framework src="libsqlite3.tbd" />
+
+
+        <config-file target="*JVerificationConfig.plist" parent="Appkey">
+          <string>$APP_KEY</string>
+        </config-file>
+
+</platform>
+
+
+
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="JGJVerificationPlugin">
