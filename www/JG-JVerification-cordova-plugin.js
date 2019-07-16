@@ -106,7 +106,7 @@ var JMessagePlugin = {
    * 传入json格式的字符串
    * {"setAuthBGImgPath":"path","setNavColor":255,"setAppPrivacyColor":[10,30]}
    * 
-   * 参考：分别查看README.md中的andorid和ios的JVerifyUIConfig配置元素说明
+   * 参考：分别查看doc中的andorid和ios的JVerifyUIConfig配置元素说明
    * key ----为JVerifyUIConfig配置元素说明表中的方法字段
    * value ----value的类型为JVerifyUIConfig配置元素说明表中的参数类型，如果是多类型时用数组类型顺序填充。
    * 
