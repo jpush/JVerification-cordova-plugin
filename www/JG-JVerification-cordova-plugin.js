@@ -116,31 +116,6 @@ var JMessagePlugin = {
   }
 };
 
-var JVerifyUIConfig_setAuthBGImgPath = "setAuthBGImgPath";
-var JVerifyUIConfig_setNavColor = "setNavColor";
-var JVerifyUIConfig_setNavText = "setNavText";
-var JVerifyUIConfig_setNavTextColor = "setNavTextColor";
-var JVerifyUIConfig_setNavReturnImgPath = "setNavReturnImgPath";
-var JVerifyUIConfig_setLogoWidth = "setLogoWidth";
-var JVerifyUIConfig_setLogoHeight = "setLogoHeight";
-var JVerifyUIConfig_setLogoHidden = "setLogoHidden";
-var JVerifyUIConfig_setLogoOffsetY = "setLogoOffsetY";
-var JVerifyUIConfig_setLogoImgPath = "setLogoImgPath";
-var JVerifyUIConfig_setNumberColor = "setNumberColor";
-var JVerifyUIConfig_setNumFieldOffsetY = "setNumFieldOffsetY";
-var JVerifyUIConfig_setLogBtnText = "setLogBtnText";
-var JVerifyUIConfig_setLogBtnTextColor = "setLogBtnTextColor";
-var JVerifyUIConfig_setLogBtnImgPath = "setLogBtnImgPath";
-var JVerifyUIConfig_setLogBtnOffsetY = "setLogBtnOffsetY";
-var JVerifyUIConfig_setAppPrivacyOne = "setAppPrivacyOne";
-var JVerifyUIConfig_setAppPrivacyTwo = "setAppPrivacyTwo";
-var JVerifyUIConfig_setAppPrivacyColor = "setAppPrivacyColor";
-var JVerifyUIConfig_setPrivacyOffsetY = "setPrivacyOffsetY";
-var JVerifyUIConfig_setCheckedImgPath = "setCheckedImgPath";
-var JVerifyUIConfig_setUncheckedImgPath = "setUncheckedImgPath";
-var JVerifyUIConfig_setSloganTextColor = "setSloganTextColor";
-var JVerifyUIConfig_setSloganOffsetY = "setSloganOffsetY";
-
 module.exports = JMessagePlugin
 
 
