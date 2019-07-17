@@ -7,7 +7,7 @@
 - 通过 cordova plugin 安装：
 
 ```shell
-cordova plugin add JGJVerification-cordova-plugin --variable APP_KEY=极光appKey
+cordova plugin add jg-jverification-cordova-plugin --variable APP_KEY=极光appKey
 ```
 
 - 或直接通过 url 安装：
