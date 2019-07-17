@@ -22,6 +22,36 @@ cordova plugin add https://github.com/jpush/JVerification-cordova-plugin.git --v
 cordova plugin add <plugin_local_path> --variable APP_KEY=极光appKey
 ```
 
+
+***说明 ***：
++ android 如果你的应用的targetSdkVersion >=28，设备在Android P 上是默认限制使用http请求的，开发者需要做如下配置：
+
++ 在res文件夹下创建一个xml文件夹，然后创建一个network_security_config.xml文件，文件内容如下：
+
+~~~
+        <?xml version="1.0" encoding="utf-8"?>
+        <network-security-config>
+            <base-config cleartextTrafficPermitted="true">
+                <trust-anchors>
+                    <certificates src="system" />
+                </trust-anchors>
+            </base-config>
+        </network-security-config>
+~~~
+
++ 在AndroidManifest.xml文件下的application标签增加以下属性：
+
+~~~
+    <application
+        ...
+        android:networkSecurityConfig="@xml/network_security_config"
+        ...
+        />
+~~~
+
+
+
+
 ## API
 
 可直接参考 [JAnalytics.js](/www/JG-JVerification-cordova-plugin.js) 文件。
