@@ -102,7 +102,7 @@ var JMessagePlugin = {
 
   /**
    * 修改授权页面主题，开发者可以通过 setCustomUIWithConfig 方法修改授权页面主题，需在 loginAuth 接口之前调用
-   * @param {String} jVerifyUIConfig = {"key":"value","key":"value"}
+   * @param {String} jVerifyUIConfig = {"key1":"value1","key2":["value1","value2"]}
    * 传入json格式的字符串
    * {"setAuthBGImgPath":"path","setNavColor":255,"setAppPrivacyColor":[10,30]}
    * 
