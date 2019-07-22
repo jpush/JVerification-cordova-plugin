@@ -180,8 +180,7 @@ public class JVerificationPlugin extends CordovaPlugin {
     private static final String setSloganOffsetY = "setSloganOffsetY";
 
     void setCustomUIWithConfig(JSONArray data, CallbackContext callbackContext) throws JSONException {
-
-        JSONObject jsonObject = data.getJSONObject(0);
+        JSONObject jsonObject = new JSONObject(data.getString(0));
         Iterator<String> keys = jsonObject.keys();
 
         JVerifyUIConfig.Builder uiConfigBuilder = new JVerifyUIConfig.Builder();
