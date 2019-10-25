@@ -52,21 +52,6 @@ var JMessagePlugin = {
   },
 
   /**
-   * 验证手机号是否是当前在线的sim卡的手机号
-   * @param {String} token 选填，getToken接口返回的token。如果传空，将自动调用getToken方法再执行手机号验证
-   * @param {String} phone 必填，需要验证的手机号。如果传空会报4001参数错误
-   * @param {function} listener = function (String){}
-   * 
-   * {"code":1000,"content":"ok","operator":"CM"}
-   * code: 返回码，1000代表验证一致，1001代表验证不一致，其他为失败，详见错误码描述
-   * content：返回码的解释信息
-   * operator：成功时为对应运营商，CM代表中国移动，CU代表中国联通，CT代表中国电信。失败时可能为null
-   */
-  verifyNumber: function (token, phone, listener) {
-    exec(listener, null, PLUGIN_NAME, 'verifyNumber', [token, phone]);
-  },
-
-  /**
    * 验证当前运营商网络是否可以进行一键登录操作，该方法会缓存取号信息，提高一键登录效率。建议发起一键登录前先调用此方法。
    * @param {int} timeOut 超时时间（毫秒）,有效取值范围[3000,10000]
    * @param {function} listener =function (String){}

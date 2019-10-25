@@ -89,27 +89,6 @@ public class JVerificationPlugin extends CordovaPlugin {
         });
     }
 
-    void verifyNumber(JSONArray data, CallbackContext callbackContext) throws JSONException {
-        String token = data.getString(0);
-        String phone = data.getString(1);
-        JVerificationInterface.verifyNumber(mContext, token, phone, new VerifyListener() {
-            @Override
-            public void onResult(int code, String content, String operator) {
-                JSONObject jsonObject = new JSONObject();
-                try {
-                    jsonObject.put("code", code);
-                    jsonObject.put("content", content);
-                    jsonObject.put("operator", operator);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                callbackContext.success(jsonObject.toString());
-
-            }
-        });
-    }
-
     void preLogin(JSONArray data, CallbackContext callbackContext) throws JSONException {
         int timeOut = data.getInt(0);
         JVerificationInterface.preLogin(mContext, timeOut, new PreLoginListener() {
