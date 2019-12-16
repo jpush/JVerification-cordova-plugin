@@ -317,7 +317,7 @@
         [dic setValue:content forKey:@"content"];
         
         NSString* json =  messageAsDictionary(dic);
-        CDVPluginResult* pluginResult = pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:json];
+        CDVPluginResult* pluginResult = pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:json];
         [pluginResult setKeepCallbackAsBool:YES];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         

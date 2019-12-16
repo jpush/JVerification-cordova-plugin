@@ -7,7 +7,7 @@
 //
 
 /**
- V 1.5.1 修复已知的bug
+ 定制版SDK v3.7.0 20191017 bitcode
  */
 
 #import <Foundation/Foundation.h>
@@ -28,7 +28,7 @@ typedef   void (^failureHandler) (NSError * _Nonnull error);
 
 /**
  初始化SDK
- @param appKey 接入方在账号平台领取的appKey
+ @param appKey 接入方在账号平台领取的appId
  @param appSecrect 接入方在账号平台领取的appSecrect
  */
 + (void)initWithSelfKey:(NSString * _Nonnull)appKey
@@ -36,10 +36,11 @@ typedef   void (^failureHandler) (NSError * _Nonnull error);
 
 
 /**
- 默认为正式环境的bundleID,需要使用测试环境的bundleId（通常是企业证书重签名改变的bundleId），请添加这个方法，在发布APP的时候请确保没有使用该方法。
+ 默认为正式环境的bundleID,需要使用测试环境的bundleID（企业证书重签名），请添加这个方法，在发布APP的时候请确保没有使用该方法。
  */
 
 +(void)setTestBundleId;
+
 
 /**
  *@description 预登录接口
@@ -50,38 +51,15 @@ typedef   void (^failureHandler) (NSError * _Nonnull error);
                       completion:(nonnull successHandler)completion
                          failure:(nonnull failureHandler)fail;
 
-/**
- *@description 登录接口
- *@param accessCode 预取号获取d的accessCode
- */
-+ (void)requestLogin:(NSString * _Nonnull)accessCode
-                  withTimeoutInterval:(NSTimeInterval)apiTimeoutInterval
-           completion:(nonnull successHandler)completion
-              failure:(nonnull failureHandler)fail;
-
-
-
-
-
 
 /**
- *@description 预取号
+ *@description 预登录接口 废弃
  @param apiTimeoutInterval 接口超时时间，传0或者小于0的数，则默认为3s
  */
 
 + (void)getMobileCodeWithTimeout:(NSTimeInterval)apiTimeoutInterval
                       completion:(nonnull successHandler)completion
                          failure:(nonnull failureHandler)fail  DEPRECATED_MSG_ATTRIBUTE("Method deprecated. Use `requestPreLogin:completion:failure:`");
-
-/**
- *@description 网络认证
- *@param accessCode 预取号获取d的accessCode
- */
-+ (void)gatewayAuthWithAccessCode:(NSString * _Nonnull)accessCode
-              withTimeoutInterval:(NSTimeInterval)apiTimeoutInterval
-                       completion:(nonnull successHandler)completion
-                          failure:(nonnull failureHandler)fail DEPRECATED_MSG_ATTRIBUTE("Method deprecated. Use `requestLogin:completion:failure:`");
-
 
 
 @end
