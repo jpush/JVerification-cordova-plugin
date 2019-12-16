@@ -7,6 +7,7 @@ import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
+import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -164,6 +165,7 @@ public class JVerificationPlugin extends CordovaPlugin {
 //    }
 
     void loginAuth(JSONArray data, final CallbackContext callbackContext) throws JSONException {
+
         boolean autoFinish = data.getBoolean(0);
         JVerificationInterface.loginAuth(mContext, autoFinish, new VerifyListener() {
             @Override
@@ -176,7 +178,11 @@ public class JVerificationPlugin extends CordovaPlugin {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                sendJsonObject(jsonObject, callbackContext);
+                PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, jsonObject.toString());
+                pluginResult.setKeepCallback(true);
+                callbackContext.sendPluginResult(pluginResult);
+
+//                sendJsonObject(jsonObject, callbackContext);
 
             }
         }, new AuthPageEventListener() {
@@ -189,7 +195,12 @@ public class JVerificationPlugin extends CordovaPlugin {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                callbackContext.error(jsonObject.toString());
+
+                PluginResult pluginResult = new PluginResult(PluginResult.Status.ERROR, jsonObject.toString());
+                pluginResult.setKeepCallback(true);
+                callbackContext.sendPluginResult(pluginResult);
+
+//                callbackContext.error(jsonObject.toString());
             }
         });
     }
