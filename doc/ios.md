@@ -4,40 +4,127 @@
 
 注意：参数为图片的值都为IOS图片资源名字。
 
+
+授权界面UI配置基类。以下是属性说明：
+
++ 授权页面设置
+
 |参数名称|参数类型|参数说明|
 |:-----:|:----:|:-----:|
-|authPageBackgroundImage|String|授权页面背景图片|
+|authPageBackgroundImage|String|授权界面背景图片|
+|autoLayout|BOOL|是否使用autoLayout，默认YES，|
+|shouldAutorotate|BOOL|是否支持自动旋转 默认YES|
+|dismissAnimationFlag|BOOL|关闭授权页是否有动画。默认YES,有动画。参数仅作用于以下两种情况：1、一键登录接口设置登录完成后，自动关闭授权页 2、用户点击授权页关闭按钮，关闭授权页|
+
+
++ 导航栏
+
+|参数名称|参数类型|参数说明|
+|:-----:|:----:|:-----:|
+|navCustom|BOOL|是否隐藏导航栏（适配全屏图片）|
 |navColor|int|导航栏颜色|
-|barStyle|int|状态栏着色样式|
-|navText|String,int|导航栏标题[标题文字,标题颜色]|
+|navText|String,int,int|导航栏标题[文字,文字颜色,文字大小]|
 |navReturnImg|String|导航返回图标|
-|navCustom|BOOL|导航栏是否隐藏|
+|prefersStatusBarHidden|BOOL|*竖屏情况下，是否隐藏状态栏。默认NO.在项目的Info.plist文件里设置UIViewControllerBasedStatusBarAppearance为YES.注意：弹窗模式下无效，是否隐藏由外部控制器控制|
+|navTransparent|BOOL|导航栏是否透明，默认不透明。此参数和navBarBackGroundImage冲突，应避免同时使用|
+|navReturnHidden|BOOL|导航栏默认返回按钮隐藏，默认不隐藏|
+|navDividingLineHidden|BOOL|导航栏分割线是否隐藏，默认隐藏|
+|navBarBackGroundImage|String|导航栏背景图片.此参数和navTransparent冲突，应避免同时使用|
+
++ LOGO
+
+|参数名称|参数类型|参数说明|
+|:-----:|:----:|:-----:|
 |logoImg|String|LOGO图片|
 |logoWidth|float|LOGO图片宽度|
 |logoHeight|float|LOGO图片高度|
 |logoOffsetY|float|LOGO图片偏移量|
 |logoHidden|BOOL|LOGO图片隐藏|
+
++ 登录按钮
+
+|参数名称|参数类型|参数说明|
+|:-----:|:----:|:-----:|
 |logBtnText|String|登录按钮文本|
 |logBtnOffsetY|float|登录按钮Y偏移量|
 |logBtnTextColor|int|登录按钮文本颜色|
-|logBtnImgs|String,String,String|登录按钮背景图片添加到数组(顺序如下) [激活状态的图片,失效状态的图片,高亮状态的图片]|
+|logBtnImgs|String,String,String|登录按钮背景图片添加到数组(顺序如下) @[激活状态的图片,失效状态的图片,高亮状态的图片]|
+
++ 手机号码
+
+|参数名称|参数类型|参数说明|
+|:-----:|:----:|:-----:|
 |numberColor|int|手机号码字体颜色|
 |numberSize|float|手机号码字体大小|
 |numFieldOffsetY|float|号码栏Y偏移量|
-|uncheckedImg|String|复选框未选中时图片|
-|checkedImg|String|复选框选中时图片|
-|appPrivacyOne|String,String|隐私条款一:数组（务必按顺序）[条款名称,条款链接]|
-|appPrivacyTwo|String,String|隐私条款二:数组（务必按顺序）[条款名称,条款链接]|
-|appPrivacyColor|int,int|隐私条款名称颜色 [基础文字颜色,条款颜色]|
+
++ checkBox
+
+|参数名称|参数类型|参数说明|
+|:-----:|:----:|:-----:|
+|uncheckedImg|String|checkBox未选中时图片|
+|checkedImg|String|checkBox选中时图片|
+|checkViewHidden|BOOL|checkBox是否隐藏，默认不隐藏|
 |privacyState|BOOL|隐私条款check框默认状态 默认:NO|
+
++ 隐私协议栏
+
+|参数名称|参数类型|参数说明|
+|:-----:|:----:|:-----:|
+|appPrivacyOne|String,String|隐私条款一:数组（务必按顺序）@[条款名称,条款链接]|
+|appPrivacyTwo|String,String|隐私条款二:数组（务必按顺序）@[条款名称,条款链接]|
+|appPrivacyColor|int,int|隐私条款名称颜色 @[基础文字颜色,条款颜色]|
+|privacyTextFontSize|float|隐私条款字体大小，默认12|
 |privacyOffsetY |float|隐私条款Y偏移量(注:此属性为与屏幕底部的距离)|
+|privacyComponents|String,String|隐私条款拼接文本数组|
+|privacyShowBookSymbol|BOOL|隐私条款是否显示书名号，默认不显示|
+|privacyLineSpacing|float|隐私条款行距，默认跟随系统|
+
+
++ 隐私协议页面
+
+|参数名称|参数类型|参数说明|
+|:-----:|:----:|:-----:|
+|agreementNavBackgroundColor|int|协议页导航栏背景颜色|
+|agreementNavText|String,int,int|运营商协议的协议页面导航栏标题[文字,文字颜色,文字大小]|
+|firstPrivacyAgreementNavText|String,int,int|自定义协议1的协议页面导航栏标题[文字,文字颜色,文字大小]|
+|secondPrivacyAgreementNavText|String,int,int|自定义协议2的协议页面导航栏标题[文字,文字颜色,文字大小]|
+|agreementNavReturnImage|String|协议页导航栏返回按钮图片|
+
+
++ slogan
+
+|参数名称|参数类型|参数说明|
+|:-----:|:----:|:-----:|
 |sloganOffsetY|float|slogan偏移量Y|
 |sloganTextColor|int|slogan文字颜色|
 
+
++ 弹窗
+
+|参数名称|参数类型|参数说明|
+|:-----:|:----:|:-----:|
+|showWindow|BOOL|是否弹窗，默认no|
+|windowBackgroundImage|String|弹框内部背景图片|
+|windowBackgroundAlpha|float|弹窗外侧 透明度  0~1.0|
+|windowCornerRadius|float|弹窗圆角数值|
+
 ![JVerification](https://docs.jiguang.cn/jverification/image/cutomeUI_description.png)
 
+##JVMobileUIConfig类
 
-### 错误码列表
+移动登录界面UI配置类，JVUIConfig的子类。
+
+##JVUnicomUIConfig类
+
+联通登录界面UI配置类，JVUIConfig的子类。
+
+##JVTelecomUIConfig类
+
+电信登录界面UI配置类，JVUIConfig的子类。
+
+
+##错误码列表
 
 |code|描述|备注|
 |:-----:|:----:|:-----:|
@@ -63,19 +150,24 @@
 |2009 | verifying, please try again later|正在认证中，稍后再试 |
 |2014 | internal error while requesting token|请求token时发生内部错误 |
 |2015 | rsa encode failed|rsa加密失败 |
-|2016|network type not supported|当前网络环境不支持认证|
+|2016 | network type not supported  |当前网络环境不支持认证 |
+|2017|carrier config invalid|运营商配置无效|
 |4001 ||参数错误。请检查参数，比如是否手机号格式不对|
 |4009 ||解密rsa失败|
+|4014 |appkey is blocked|功能被禁用|
 |4018 ||没有足够的余额|
 |4031 ||不是认证用户|
 |4032 ||获取不到用户配置|
-|4033|appkey is not support login|不是一键登录用户|
-|5000|bad server|服务器未知错误|
+|4033|Login feature is not available |未开启一键登录|
 |6000|loginToken request success|获取loginToken成功|
 |6001|fetch loginToken failed|获取loginToken失败|
 |6002|login cancel|用户取消登录|
 |6003|UI load error|UI加载异常|
 |6004|authorization requesting, please try again later|正在登录中，稍候再试|
+|6006|prelogin scrip expired|预取号信息过期，请重新预取号|
 |7000|preLogin success|预取号成功|
 |7001|preLogin failed|预取号失败|
 |7002|preLogin requesting, please try again later|取号中|
+|8000|init success|初始化成功|
+|8004|init failed|初始化失败|
+|8005|init timeout|初始化超时|
