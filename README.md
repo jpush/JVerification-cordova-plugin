@@ -50,7 +50,7 @@ cordova plugin add <plugin_local_path> --variable APP_KEY=极光appKey
 ~~~
 
 
-### 窗口模式样式设置
+### android窗口模式样式设置
 
 #### 1、setCustomUIWithConfig
 
