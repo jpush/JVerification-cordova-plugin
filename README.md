@@ -52,7 +52,8 @@ cordova plugin add <plugin_local_path> --variable APP_KEY=极光appKey
 
 ### 窗口模式样式设置
 
-####1、setCustomUIWithConfig
+#### 1、setCustomUIWithConfig
+
 JVerifyUIConfig配置元素说明   
 + 授权页弹窗模式
 
@@ -60,7 +61,7 @@ JVerifyUIConfig配置元素说明
 |:-----:|:----:|:----:|
 |setDialogTheme|int,int,int,int,boolean|设置授权页为弹窗模式(窗口宽度，窗口高度，窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口是否居屏幕底部。设置后offsetY将失效)，单位dp。|
 
-####2、在manifest中为授权页activity设置窗口样式style
+#### 2、在manifest中为授权页activity设置窗口样式style
 
 AndroidManifest.xml
 
@@ -73,7 +74,7 @@ AndroidManifest.xml
 </activity>
 ~~~
 
-####style中增加具体弹窗样式
+#### style中增加具体弹窗样式
 
 res/values/styles.xml
 
@@ -89,7 +90,7 @@ res/values/styles.xml
     </style>
 ~~~
 
-####定义窗口圆角属性
+#### 定义窗口圆角属性
 
 res/drawable/dialog_bg.xml
 
