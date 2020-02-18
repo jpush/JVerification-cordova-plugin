@@ -50,6 +50,56 @@ cordova plugin add <plugin_local_path> --variable APP_KEY=极光appKey
 ~~~
 
 
+### 窗口模式样式设置
+
+####1、setCustomUIWithConfig
+JVerifyUIConfig配置元素说明   
++ 授权页弹窗模式
+
+|方法|参数类型|说明|
+|:-----:|:----:|:----:|
+|setDialogTheme|int,int,int,int,boolean|设置授权页为弹窗模式(窗口宽度，窗口高度，窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口是否居屏幕底部。设置后offsetY将失效)，单位dp。|
+
+####2、在manifest中为授权页activity设置窗口样式style
+
+AndroidManifest.xml
+
+~~~
+<activity android:name="cn.jiguang.verifysdk.CtLoginActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/ActivityDialogStyle"   <!-- 设置自定义style -->
+            android:screenOrientation="unspecified"
+            android:launchMode="singleTop">
+</activity>
+~~~
+
+####style中增加具体弹窗样式
+
+res/values/styles.xml
+
+~~~
+<style name="ActivityDialogStyle">
+		 <!--隐藏action bar和title bar-->
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <!--背景透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--dialog圆角-->
+        <item name="android:windowBackground">@drawable/dialog_bg</item>
+    </style>
+~~~
+
+####定义窗口圆角属性
+
+res/drawable/dialog_bg.xml
+
+~~~
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="5dp"/>
+</shape>
+~~~
+
+
 
 
 ## API

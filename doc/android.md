@@ -137,12 +137,6 @@
 |:-----:|:----:|:----:|
 |setNeedStartAnim|boolean|设置拉起授权页时是否需要显示默认动画。默认展示。since 2.5.2|
 |setNeedCloseAnim|boolean|设置关闭授权页时是否需要显示默认动画。默认展示。since 2.5.2|
-              
-+ 授权页弹窗模式
-
-|方法|参数类型|说明|
-|:-----:|:----:|:----:|
-|setDialogTheme|int,int,int,int,boolean|设置授权页弹窗的位置(窗口宽度，窗口高度，窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口是否居屏幕底部。设置后offsetY将失效)，单位dp。|
                
 
 ![JVerification](https://docs.jiguang.cn/jverification/image/cutomeUI_description_android.png)
