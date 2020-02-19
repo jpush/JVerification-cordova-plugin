@@ -1,6 +1,6 @@
 {
   "name": "jg-jverification-cordova-plugin",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "JVerification-cordova-plugin",
   "cordova": {
     "id": "jg-jverification-cordova-plugin",
