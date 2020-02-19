@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin xmlns:android="http://schemas.android.com/apk/res/android"
-    id="jg-jverification-cordova-plugin" version="1.2.2"
+    id="jg-jverification-cordova-plugin" version="1.2.3"
     xmlns="http://apache.org/cordova/ns/plugins/1.0">
     <name>JVerification-cordova-plugin</name>
 
@@ -128,22 +128,6 @@
 
         </config-file>
 
-        <config-file parent="/resources" target="res/values/styles.xml">
-            <!-- Base application theme. -->
-            <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-                <!-- Customize your theme here. -->
-            </style>
-
-            <style name="ActivityDialogStyle">
-                <!--去掉action bar和标题栏-->
-                <item name="android:windowActionBar">false</item>
-                <item name="android:windowNoTitle">true</item>
-                <!--背景透明-->
-                <item name="android:windowIsTranslucent">true</item>
-                <!--dialog圆角-->
-                <item name="android:windowBackground">@drawable/dialog_bg</item>
-            </style>
-        </config-file>
 
         <resource-file src="src/android/libs/arm64-v8a/libCtaApiLib.so" target="jniLibs/arm64-v8a/libCtaApiLib.so"/>
         <resource-file src="src/android/libs/armeabi/libCtaApiLib.so" target="jniLibs/armeabi/libCtaApiLib.so"/>
@@ -157,6 +141,7 @@
             
         <resource-file src="src/android/res/anim/umcsdk_anim_loading.xml"  target="res/anim/umcsdk_anim_loading.xml"/>
 
+        <resource-file src="src/android/res/values/styles.xml"  target="res/values/styles.xml"/>
         <resource-file src="src/android/res/drawable/dialog_bg.xml"  target="res/drawable/dialog_bg.xml"/>
         <resource-file src="src/android/res/drawable/umcsdk_get_smscode_btn_bg.xml"  target="res/drawable/umcsdk_get_smscode_btn_bg.xml"/>
         <resource-file src="src/android/res/drawable/umcsdk_login_btn_bg.xml"  target="res/drawable/umcsdk_login_btn_bg.xml"/>
