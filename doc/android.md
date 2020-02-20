@@ -144,7 +144,7 @@
 
 |方法|参数类型|说明|
 |:-----:|:----:|:----:|
-|setDialogTheme|int,int,int,int,boolean|设置授权页为弹窗模式(窗口宽度，窗口高度，窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口是否居屏幕底部。设置后offsetY将失效)，单位dp。|
+|setDialogTheme|int,int,int,int,boolean|设置授权页为弹窗模式(窗口宽度，窗口高度，窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口是否居屏幕底部。设置后offsetY将失效)，单位dp。注：窗口不支持导航栏|
 
 ![JVerification](https://docs.jiguang.cn/jverification/image/cutomeUI_description_android.png)
 
