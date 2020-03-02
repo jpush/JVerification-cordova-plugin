@@ -1,6 +1,6 @@
 {
   "name": "jg-jverification-cordova-plugin",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "JVerification-cordova-plugin",
   "cordova": {
     "id": "jg-jverification-cordova-plugin",
@@ -23,7 +23,7 @@
   ],
   "devDependencies": {
         "cordova-plugin-device": "*",
-        "cordova-plugin-jcore": ">=1.2.5"
+        "cordova-plugin-jcore": ">=1.3.1"
     },
   "author": "JiGuang",
   "license": "MIT",
