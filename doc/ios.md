@@ -40,6 +40,8 @@
 |logoHeight|float|LOGO图片高度|
 |logoOffsetY|float|LOGO图片偏移量|
 |logoHidden|BOOL|LOGO图片隐藏|
+|logoConstraints|[float,float,float,float]|LOGO图片布局对象(窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口宽度，窗口高度)|
+|logoHorizontalConstraints|[float,float,float,float]|LOGO图片 横屏布局(窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口宽度，窗口高度)，横屏时优先级高于logoConstraints|
 
 + 登录按钮
 
@@ -49,6 +51,8 @@
 |logBtnOffsetY|float|登录按钮Y偏移量|
 |logBtnTextColor|int|登录按钮文本颜色|
 |logBtnImgs|String,String,String|登录按钮背景图片添加到数组(顺序如下) @[激活状态的图片,失效状态的图片,高亮状态的图片]|
+|logBtnConstraints|[float,float,float,float]|登录按钮布局对象(窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口宽度，窗口高度)|
+|logBtnHorizontalConstraints|[float,float,float,float]|登录按钮 横屏布局(窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口宽度，窗口高度)，横屏时优先级高于logBtnConstraints|
 
 + 手机号码
 
@@ -57,6 +61,8 @@
 |numberColor|int|手机号码字体颜色|
 |numberSize|float|手机号码字体大小|
 |numFieldOffsetY|float|号码栏Y偏移量|
+|numberConstraints|[float,float,float,float]|号码栏布局对象(窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口宽度，窗口高度)|
+|numberHorizontalConstraints|[float,float,float,float]|号码栏 横屏布局(窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口宽度，窗口高度),横屏时优先级高于numberConstraints|
 
 + checkBox
 
@@ -66,6 +72,8 @@
 |checkedImg|String|checkBox选中时图片|
 |checkViewHidden|BOOL|checkBox是否隐藏，默认不隐藏|
 |privacyState|BOOL|隐私条款check框默认状态 默认:NO|
+|checkViewConstraints|[float,float,float,float]|checkBox布局对象(窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口宽度，窗口高度)|
+|checkViewHorizontalConstraints|[float,float,float,float]|checkBox横屏布局(窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口宽度，窗口高度)，横屏优先级高于checkViewConstraints|
 
 + 隐私协议栏
 
@@ -79,6 +87,8 @@
 |privacyComponents|String,String|隐私条款拼接文本数组|
 |privacyShowBookSymbol|BOOL|隐私条款是否显示书名号，默认不显示|
 |privacyLineSpacing|float|隐私条款行距，默认跟随系统|
+|privacyConstraints|[float,float,float,float]|隐私条款布局对象(窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口宽度，窗口高度)|
+|privacyHorizontalConstraints|[float,float,float,float]|隐私条款 横屏布局(窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口宽度，窗口高度)，横屏下优先级高于privacyConstraints|
 
 
 + 隐私协议页面
@@ -98,6 +108,8 @@
 |:-----:|:----:|:-----:|
 |sloganOffsetY|float|slogan偏移量Y|
 |sloganTextColor|int|slogan文字颜色|
+|sloganConstraints|[float,float,float,float]|slogan布局对象(窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口宽度，窗口高度)|
+|sloganHorizontalConstraints|[float,float,float,float]|slogan 横屏布局(窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口宽度，窗口高度),横屏下优先级高于sloganConstraints|
 
 
 + 弹窗
@@ -108,6 +120,11 @@
 |windowBackgroundImage|String|弹框内部背景图片|
 |windowBackgroundAlpha|float|弹窗外侧 透明度  0~1.0|
 |windowCornerRadius|float|弹窗圆角数值|
+|windowConstraints|[float,float,float,float]|弹窗布局对象(窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口宽度，窗口高度)|
+|windowHorizontalConstraints|[float,float,float,float]|弹窗横屏布局(窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口宽度，窗口高度)，横屏下优先级高于windowConstraints|
+|windowCloseBtnImgs|[String,String]|弹窗close按钮图片 @[普通状态图片，高亮状态图片]
+|windowCloseBtnConstraints|[float,float,float,float]|弹窗close按钮布局(窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口宽度，窗口高度)
+|windowCloseBtnHorizontalConstraints|[float,float,float,float]|弹窗close按钮 横屏布局(窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口宽度，窗口高度),横屏下优先级高于windowCloseBtnConstraints|
 
 ![JVerification](https://docs.jiguang.cn/jverification/image/cutomeUI_description.png)
 
