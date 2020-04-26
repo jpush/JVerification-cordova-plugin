@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin xmlns:android="http://schemas.android.com/apk/res/android"
-    id="jg-jverification-cordova-plugin" version="1.2.5"
+    id="jg-jverification-cordova-plugin" version="1.2.6"
     xmlns="http://apache.org/cordova/ns/plugins/1.0">
     <name>JVerification-cordova-plugin</name>
 
@@ -135,7 +135,7 @@
         <resource-file src="src/android/libs/x86/libCtaApiLib.so" target="jniLibs/x86/libCtaApiLib.so"/>
         <resource-file src="src/android/libs/x86_64/libCtaApiLib.so" target="jniLibs/x86_64/libCtaApiLib.so"/>
 
-        <lib-file src="src/android/libs/jverification-android-release-2.5.2.jar" />
+        <lib-file src="src/android/libs/jverification-android-release-2.6.3.jar" />
         <source-file src="src/android/cn/jiguang/cordova/verification/JVerificationPlugin.java"
             target-dir="src/cn/jiguang/cordova/verification/" />
             
@@ -162,5 +162,7 @@
         <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_sms_unable.png"  target="res/drawable-xxhdpi/umcsdk_sms_unable.png"/>
         <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_toast_bg.png"  target="res/drawable-xxhdpi/umcsdk_toast_bg.png"/>
         <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_uncheck_image.png"  target="res/drawable-xxhdpi/umcsdk_uncheck_image.png"/>
+
+        <resource-file src="src/android/assets/cucc/host_cucc.properties"  target="assets/cucc/host_cucc.properties"/>
     </platform>
 </plugin>

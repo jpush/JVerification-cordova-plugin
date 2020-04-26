@@ -107,6 +107,26 @@ var JMessagePlugin = {
         exec(null, null, PLUGIN_NAME, 'dismissLoginAuthFinish', [needCloseAnim]);
     },
     /**
+     *
+     * @param {String} phonenum 电话号码
+     * @param {String} signId 短信签名id，如果为null，则为默认短信签名id
+     * @param {String} tempId 短信模板id，如果为null，则为默认短信模板id
+     * @param {function} listener =function (String){}  回调接口
+     * {"code":3000,"msg":"1213134e132432"}
+     * code: 返回码，3000代表获取验证码成功，msg为此次获取的唯一标识码(uuid)，其他为失败，详见错误码描述
+     * msg：结果描述
+     */
+    getSmsCode: function (phonenum, signId, tempId, listener) {
+        exec(listener, null, PLUGIN_NAME, 'getSmsCode', [phonenum, signId, tempId]);
+    },
+    /**
+     *设置前后两次获取验证码的时间间隔，默认 30000ms，有效范围(0,300000)
+     * @param {int}intervalTime 时间间隔，单位是毫秒(ms)。
+     */
+    setSmsIntervalTime: function (intervalTime) {
+        exec(null, null, PLUGIN_NAME, 'setSmsIntervalTime', [intervalTime]);
+    },
+    /**
      * 修改授权页面主题，开发者可以通过 setCustomUIWithConfig 方法修改授权页面主题，需在 loginAuth 接口之前调用
      * @param {String} jVerifyUIConfig = {"key1":"value1","key2":["value1","value2"]}
      * 传入json格式的字符串

@@ -226,6 +226,33 @@ public class JVerificationPlugin extends CordovaPlugin {
         });
     }
 
+
+    void getSmsCode(JSONArray data, CallbackContext callbackContext) {
+        Context context = mContext;
+        String phonenum = data.optString(0);
+        String sign_id = data.optString(1);
+        String temp_id = data.optString(2);
+        JVerificationInterface.getSmsCode(context, phonenum, sign_id, temp_id, new RequestCallback<String>() {
+            @Override
+            public void onResult(int code, String msg) {
+
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("code", code);
+                    jsonObject.put("msg", msg);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                sendJsonObject(jsonObject, callbackContext);
+            }
+        });
+    }
+
+    void setSmsIntervalTime(JSONArray data, CallbackContext callbackContext) {
+        long intervalTime = data.optLong(0);
+        JVerificationInterface.setSmsIntervalTime(intervalTime);
+    }
+
     //设置授权页背景
     private static final String setAuthBGImgPath = "setAuthBGImgPath";
     //    状态栏
