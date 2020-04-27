@@ -136,51 +136,6 @@
     }];
 }
 
-//- (void)verifyNumber:(CDVInvokedUrlCommand*)command
-//{
-//
-//    NSString* token = [command.arguments objectAtIndex:0];
-//    NSString* phone = [command.arguments objectAtIndex:1];
-//
-//
-//    JVAuthEntity *entity = [[JVAuthEntity alloc] init];
-//    entity.number = phone;
-//    entity.token = token;
-//    [JVERIFICATIONService verifyNumber:entity result:^(NSDictionary *result) {
-////        {"code":1000,"content":"ok","operator":"CM"}
-////        result 字典 key为code和content两个字段
-////        NSLog(@"verifyNumber result:%@", result);
-//
-//
-//        NSNumber* code = result[@"code"];
-//        NSString* operator = result[@"operator"];
-//        NSString* content = result[@"content"];
-//
-//
-//        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-//        [dic setObject:[NSNumber numberWithInteger:[code intValue]] forKey:@"code"];
-//
-//        [dic setValue:content forKey:@"content"];
-//        [dic setValue:operator forKey:@"operator"];
-//
-//
-//        NSString* json =  messageAsDictionary(dic);
-//        CDVPluginResult* pluginResult = pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:json];
-//        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-//
-//
-//    }];
-//
-//
-////    CDVPluginResult* pluginResult = nil;
-////    if (myarg != nil) {
-////        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-////    } else {
-////        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Arg was null"];
-////    }
-////    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-//}
-
 
 - (void)preLogin:(CDVInvokedUrlCommand*)command
 {
@@ -216,65 +171,9 @@
         
         
     }];
-//    CDVPluginResult* pluginResult = nil;
-//    NSString* myarg = [command.arguments objectAtIndex:0];
-//
-//    if (myarg != nil) {
-//        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-//    } else {
-//        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Arg was null"];
-//    }
-//    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 
-
-//- (void)loginAuth:(CDVInvokedUrlCommand*)command
-//{
-//    
-//    BOOL b = [command.arguments  objectAtIndex:0];
-//    
-//    [JVERIFICATIONService getAuthorizationWithController:self.viewController hide:b completion:^(NSDictionary *result) {
-////        {"code":6000,"content":"ok","operator":"CM"}
-////        result 字典 获取到token时key有operator、code、loginToken字段，获取不到token是key为code和content字段
-////        NSLog(@"getAuthorizationWithController result:%d", b);
-////        NSLog(@"getAuthorizationWithController result:%@", result);
-//        
-//        
-//        NSNumber* code = result[@"code"];
-//        NSString* operator = result[@"operator"];
-//        NSString* content = result[@"content"];
-//        NSString* loginToken = result[@"loginToken"];
-//        
-//        
-//        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-//        [dic setObject:[NSNumber numberWithInteger:[code intValue]] forKey:@"code"];
-//        
-//        if (nil != loginToken) {
-//            [dic setValue:loginToken forKey:@"content"];
-//            [dic setValue:operator forKey:@"operator"];
-//        }else{
-//            [dic setValue:content forKey:@"content"];
-//        }
-//        
-//        
-//        NSString* json =  messageAsDictionary(dic);
-//        CDVPluginResult* pluginResult = pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:json];
-//        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-//        
-//        
-//    }];
-//    
-////    CDVPluginResult* pluginResult = nil;
-////    NSString* myarg = [command.arguments objectAtIndex:0];
-////
-////    if (myarg != nil) {
-////        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-////    } else {
-////        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Arg was null"];
-////    }
-////    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-//}
 
 - (void)loginAuth:(CDVInvokedUrlCommand*)command
 {
@@ -324,15 +223,6 @@
         
     }];
     
-//    CDVPluginResult* pluginResult = nil;
-//    NSString* myarg = [command.arguments objectAtIndex:0];
-//
-//    if (myarg != nil) {
-//        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-//    } else {
-//        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Arg was null"];
-//    }
-//    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 
@@ -371,6 +261,45 @@
 {
     [JVERIFICATIONService clearPreLoginCache];
 }
+
+- (void)getSmsCode:(CDVInvokedUrlCommand*)command
+{
+    NSString* phonenum = [command.arguments  objectAtIndex:0];
+    NSString* signId = [command.arguments  objectAtIndex:1];
+    NSString* tempId = [command.arguments  objectAtIndex:2];
+    
+    [JVERIFICATIONService getSMSCode:phonenum templateID:tempId   signID:signId completionHandler:^(NSDictionary * _Nonnull result) {
+
+        NSNumber* code = result[@"code"];
+        NSString* uuid = result[@"uuid"];
+        NSString* msg = result[@"msg"];
+       
+        
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+               [dic setObject:[NSNumber numberWithInteger:[code intValue]] forKey:@"code"];
+               
+               if (nil != uuid) {
+                   [dic setValue:uuid forKey:@"msg"];
+               }else{
+                   [dic setValue:msg forKey:@"msg"];
+               }
+               
+               NSString* json =  messageAsDictionary(dic);
+               CDVPluginResult* pluginResult = pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:json];
+               [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+               
+        
+    }];
+}
+
+
+- (void)setSmsIntervalTime:(CDVInvokedUrlCommand*)command
+{
+    NSNumber* time = [command.arguments  objectAtIndex:0];
+    
+    [JVERIFICATIONService setGetCodeInternal:[time longValue]];
+}
+
 
 - (void)setCustomUIWithConfig:(CDVInvokedUrlCommand*)command
 {
