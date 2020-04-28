@@ -333,6 +333,8 @@
 
 //授权页面设置
 static  NSString* authPageBackgroundImage=@"authPageBackgroundImage";
+static  NSString* authPageGifImagePath=@"authPageGifImagePath";
+static  NSString* setVideoBackgroudResource=@"setVideoBackgroudResource";
 static  NSString* autoLayout=@"autoLayout";
 static  NSString* shouldAutorotate=@"shouldAutorotate";
 static  NSString* dismissAnimationFlag=@"dismissAnimationFlag";
@@ -417,6 +419,13 @@ void setJVUIConfig(NSString* key ,NSDictionary *dict,
     //授权页面设置
     if ([key containsString:authPageBackgroundImage]) {
         jvUIConfig.authPageBackgroundImage = [UIImage imageNamed:dict[key]];
+    }else if([key containsString:authPageGifImagePath]){
+        jvUIConfig.authPageGifImagePath = dict[key];
+    }else if([key containsString:setVideoBackgroudResource]){
+        NSArray* textArry = dict[key];
+        NSString *path = textArry[0];
+        NSString *imageName = textArry[1];
+        [jvUIConfig setVideoBackgroudResource:path placeHolder:imageName];
     }else if([key containsString:autoLayout]){
         jvUIConfig.autoLayout = [dict[key] boolValue];
     }else if([key containsString:shouldAutorotate]){

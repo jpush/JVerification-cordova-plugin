@@ -12,6 +12,8 @@
 |参数名称|参数类型|参数说明|
 |:-----:|:----:|:-----:|
 |authPageBackgroundImage|String|授权界面背景图片|
+|authPageGifImagePath|String|授权界面背景gif资源路径，与authPageBackgroundImage属性互斥|
+|setVideoBackgroudResource|String,String|视频路径支持在线url或者本地视频路径，视频未准备好播放时的占位图片名称|
 |autoLayout|BOOL|是否使用autoLayout，默认YES，|
 |shouldAutorotate|BOOL|是否支持自动旋转 默认YES|
 |dismissAnimationFlag|BOOL|关闭授权页是否有动画。默认YES,有动画。参数仅作用于以下两种情况：1、一键登录接口设置登录完成后，自动关闭授权页 2、用户点击授权页关闭按钮，关闭授权页|

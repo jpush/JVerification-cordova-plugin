@@ -7,19 +7,21 @@
 ***以下设置图片名都为drawable下的图片名。（图片名不要后缀，图片自行放到res下的drawable文件夹内）***
 
 ***x轴未设置偏移则所有组件默认横向居中***
- 
+
 + 设置授权页背景
 + 支持的版本 ：2.1.1
 + 说明：
 + 图片会默认拉伸铺满整个屏幕，适配不同尺寸手机，建议使用 .9.png 图片来解决适配问题。
- 
+
 |方法|参数类型|说明|
 |:-----:|:----:|:----:|
 |setAuthBGImgPath|String|设置背景图片|
- 
- 
+|setAuthBGGifPath|String|设置本地gif背景图片，需要放置到drawable文件中，传入图片名称即可|
+|setAuthBGVideoPath|String,String|设置背景Video文件路径:(支持本地路径如：需把文件放入到raw文件夹中，传入参数为， "raw:"+文件名称，如：raw:testvideo  支持网络路径(建议下载到本地后使用本地路径，网络路径会出现卡顿等网络问题)如："https://xxx")，设置默认第一频图片:(需要放置到drawable文件中，传入图片名称即可,如果Video文件路径为本地，则可以填null)|
+
+
 + 授权页状态栏
- 
+
 |方法|参数类型|说明|
 |:-----:|:----:|:----:|
 |setStatusBarColorWithNav|boolean|设置状态栏与导航栏同色。仅在android 5.0以上设备生效。 since 2.4.1|
@@ -46,6 +48,7 @@
 |setNavReturnBtnRightOffsetX|int|设置导航栏返回按钮距屏幕右侧偏移。since 2.4.8|
 |setNavReturnBtnOffsetY|int|设置导航栏返回按钮距上端偏移。since 2.4.8|
 |setNavHidden|boolean|设置导航栏是否隐藏。since 2.4.8|
+|setNavTextBold|boolean|设置导航栏标题字体是否加粗。since 2.5.4|
 
 + 授权页logo
 
@@ -70,6 +73,7 @@
 |setNumberFieldOffsetBottomY|int|设置号码栏相对于屏幕底部y轴偏移。since 2.4.8|
 |setNumberFieldWidth|int|设置号码栏宽度。since 2.4.8|
 |setNumberFieldHeight|int|设置号码栏高度。since 2.4.8|
+|setNumberTextBold|boolean|设置手机号码字体是否加粗。since 2.5.4|
 
 + 授权页登录按钮
  
@@ -84,6 +88,7 @@
 |setLogBtnHeight|int|设置登录按钮高度。since 2.3.8|
 |setLogBtnTextSize|int|设置登录按钮字体大小。since 2.3.8|
 |setLogBtnBottomOffsetY|int|设置登录按钮相对屏幕底部y轴偏移。since 2.4.8|
+|setLogBtnTextBold|boolean|设置登录按钮字体是否加粗。since 2.5.4|
 
 + 授权页隐私栏
 
@@ -106,6 +111,8 @@
 |setPrivacyWithBookTitleMark|boolean|设置隐私条款运营商协议名是否加书名号。since 2.4.8|
 |setPrivacyCheckboxInCenter|boolean|设置隐私条款checkbox是否相对协议文字纵向居中。默认居顶。since 2.4.8|
 |setPrivacyTextWidth|int|设置隐私条款文字栏宽度。since 2.5.0|
+|setPrivacyTextBold|boolean|设置隐私条款文字字体是否加粗。since 2.5.4|
+|setPrivacyUnderlineText|boolean|设置隐私条款文字字体是否加下划线。since 2.5.4|
 
 + 授权页隐私协议web页面
 
@@ -114,6 +121,7 @@
 |setPrivacyNavColor|int|设置协议展示web页面导航栏背景颜色。since 2.4.8|
 |setPrivacyNavTitleTextColor|int|设置协议展示web页面导航栏标题文字颜色。since 2.4.8|
 |setPrivacyNavTitleTextSize|int|设置协议展示web页面导航栏标题文字大小（sp）。since 2.4.8|
+|setPrivacyNavTitleTextBold|boolean|设置协议展示web页面导航栏字体是否加粗。since 2.5.4|
 |setAppPrivacyNavTitle1|String|设置自定义协议1对应web页面导航栏文字内容。since 2.5.2|
 |setAppPrivacyNavTitle2|String|设置自定义协议2对应web页面导航栏文字内容。since 2.5.2|
 |setPrivacyStatusBarColorWithNav|boolean|设置授权协议web页面状态栏与导航栏同色。仅在android 5.0以上设备生效。since 2.5.2|
@@ -132,6 +140,7 @@
 |setSloganBottomOffsetY|int|设置slogan相对于屏幕底部下边缘y轴偏移。since 2.3.8|
 |setSloganTextSize|int|设置slogan字体大小。since 2.4.8|
 |setSloganHidden|boolean|设置slogan是否隐藏。since 2.4.8|
+|setSloganTextBold|boolean|设置slogan字体是否加粗。since 2.5.4|
               
 + 授权页动画
 
@@ -180,6 +189,13 @@
 |2013|内容为具体错误原因|网络发生异常|
 |2014|internal error while requesting token|请求token时发生内部错误|
 |2016|network type not supported|当前网络环境不支持认证|
+|2017|carrier config invalid|运营商配置错误|
+|2018|Local unsupported operator|本地不支持的运营商|
+|3000|获取短信验证码成功|获取短信验证码成功|
+|3001|没有初始化|没有初始化|
+|3002|无效电话号码|无效电话号码|
+|3003|前后两次请求少于设定时间|前后两次请求少于设定时间|
+|3004|未知错误|未知错误,主要看错误信息|
 |4001|parameter invalid|参数错误。请检查参数，比如是否手机号格式不对|
 |4018||没有足够的余额|
 |4031||不是认证SDK用户|
@@ -191,9 +207,13 @@
 |6002|fetch loginToken canceled|用户取消获取loginToken|
 |6003|UI 资源加载异常|未正常添加sdk所需的资源文件|
 |6004|authorization requesting, please try again later|正在登录中，稍后再试|
+|6006|prelogin scrip expired.|预取号结果超时，需要重新预取号|
 |7000|preLogin success|sdk 预取号成功|
 |7001|preLogin failed|sdk 预取号失败|
 |7002|preLogin requesting, please try again later|正在预取号中，稍后再试|
+|8000|init success|初始化成功|
+|8004|init failed|初始化失败，详见日志|
+|8005|init timeout|初始化超时，稍后再试|
 |-994|网络连接超时|   |
 |-996|网络连接断开|   |
 |-997|注册失败/登录失败|（一般是由于没有网络造成的）如果确保设备网络正常，还是一直遇到此问题，则还有另外一个原因：JPush 服务器端拒绝注册。而这个的原因一般是：你当前 App 的 Android 包名以及 AppKey，与你在 Portal 上注册的应用的 Android 包名与 AppKey 不相同。|
