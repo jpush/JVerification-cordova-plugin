@@ -1,6 +1,7 @@
 package cn.jiguang.cordova.verification;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.Log;
 
 import org.apache.cordova.CallbackContext;
@@ -255,6 +256,8 @@ public class JVerificationPlugin extends CordovaPlugin {
 
     //设置授权页背景
     private static final String setAuthBGImgPath = "setAuthBGImgPath";
+    private static final String setAuthBGGifPath = "setAuthBGGifPath";
+    private static final String setAuthBGVideoPath = "setAuthBGVideoPath";
     //    状态栏
     private static final String setStatusBarColorWithNav = "setStatusBarColorWithNav";
     private static final String setStatusBarDarkMode = "setStatusBarDarkMode";
@@ -275,6 +278,7 @@ public class JVerificationPlugin extends CordovaPlugin {
     private static final String setNavReturnBtnRightOffsetX = "setNavReturnBtnRightOffsetX";
     private static final String setNavReturnBtnOffsetY = "setNavReturnBtnOffsetY";
     private static final String setNavHidden = "setNavHidden";
+    private static final String setNavTextBold = "setNavTextBold";
     //    授权页logo
     private static final String setLogoWidth = "setLogoWidth";
     private static final String setLogoHeight = "setLogoHeight";
@@ -291,6 +295,7 @@ public class JVerificationPlugin extends CordovaPlugin {
     private static final String setNumberFieldOffsetBottomY = "setNumberFieldOffsetBottomY";
     private static final String setNumberFieldWidth = "setNumberFieldWidth";
     private static final String setNumberFieldHeight = "setNumberFieldHeight";
+    private static final String setNumberTextBold = "setNumberTextBold";
     //    授权页登录按钮
     private static final String setLogBtnText = "setLogBtnText";
     private static final String setLogBtnTextColor = "setLogBtnTextColor";
@@ -301,6 +306,7 @@ public class JVerificationPlugin extends CordovaPlugin {
     private static final String setLogBtnHeight = "setLogBtnHeight";
     private static final String setLogBtnTextSize = "setLogBtnTextSize";
     private static final String setLogBtnBottomOffsetY = "setLogBtnBottomOffsetY";
+    private static final String setLogBtnTextBold = "setLogBtnTextBold";
     //    授权页隐私栏
     private static final String setAppPrivacyOne = "setAppPrivacyOne";
     private static final String setAppPrivacyTwo = "setAppPrivacyTwo";
@@ -319,11 +325,14 @@ public class JVerificationPlugin extends CordovaPlugin {
     private static final String setPrivacyWithBookTitleMark = "setPrivacyWithBookTitleMark";
     private static final String setPrivacyCheckboxInCenter = "setPrivacyCheckboxInCenter";
     private static final String setPrivacyTextWidth = "setPrivacyTextWidth";
+    private static final String setPrivacyTextBold = "setPrivacyTextBold";
+    private static final String setPrivacyUnderlineText = "setPrivacyUnderlineText";
     //    private static final String enableHintToast = "enableHintToast";
     //    授权页隐私协议web页面
     private static final String setPrivacyNavColor = "setPrivacyNavColor";
     private static final String setPrivacyNavTitleTextColor = "setPrivacyNavTitleTextColor";
     private static final String setPrivacyNavTitleTextSize = "setPrivacyNavTitleTextSize";
+    private static final String setPrivacyNavTitleTextBold = "setPrivacyNavTitleTextBold";
     private static final String setAppPrivacyNavTitle1 = "setAppPrivacyNavTitle1";
     private static final String setAppPrivacyNavTitle2 = "setAppPrivacyNavTitle2";
     private static final String setPrivacyStatusBarColorWithNav = "setPrivacyStatusBarColorWithNav";
@@ -338,6 +347,7 @@ public class JVerificationPlugin extends CordovaPlugin {
     private static final String setSloganBottomOffsetY = "setSloganBottomOffsetY";
     private static final String setSloganTextSize = "setSloganTextSize";
     private static final String setSloganHidden = "setSloganHidden";
+    private static final String setSloganTextBold = "setSloganTextBold";
     //    授权页动画
     private static final String setNeedStartAnim = "setNeedStartAnim";
     private static final String setNeedCloseAnim = "setNeedCloseAnim";
@@ -348,8 +358,6 @@ public class JVerificationPlugin extends CordovaPlugin {
         JSONObject jsonObjectPortrait = new JSONObject(data.getString(0));
         JVerifyUIConfig.Builder uiConfigPortrait = getBuilder(jsonObjectPortrait);
         JVerificationInterface.setCustomUIWithConfig(uiConfigPortrait.build());
-
-
     }
 
     void setCustomUIWithConfigAndroid(JSONArray data, CallbackContext callbackContext) throws JSONException {
@@ -381,6 +389,18 @@ public class JVerificationPlugin extends CordovaPlugin {
         //设置授权页背景
         if (setAuthBGImgPath.equals(key)) {
             uiConfigBuilder.setAuthBGImgPath(jsonObject.getString(key));
+        } else if (setAuthBGGifPath.equals(key)) {
+            uiConfigBuilder.setAuthBGGifPath(jsonObject.getString(key));
+        } else if (setAuthBGVideoPath.equals(key)) {
+            JSONArray jsonArray = jsonObject.getJSONArray(key);
+            String videoPath = jsonArray.getString(0);
+            if (null != videoPath) {
+                if (videoPath.startsWith("raw:")) {
+                    videoPath = videoPath.replace("raw:", "");
+                    videoPath = "android.resource://" + mContext.getPackageName() + "/" + getRawResourceId(mContext, videoPath);
+                }
+            }
+            uiConfigBuilder.setAuthBGVideoPath(videoPath, jsonArray.getString(1));
         }
         //    授权页导航栏
         else if (setNavColor.equals(key)) {
@@ -409,6 +429,8 @@ public class JVerificationPlugin extends CordovaPlugin {
             uiConfigBuilder.setNavReturnBtnOffsetY(jsonObject.getInt(key));
         } else if (setNavHidden.equals(key)) {
             uiConfigBuilder.setNavHidden(jsonObject.getBoolean(key));
+        } else if (setNavTextBold.equals(key)) {
+            uiConfigBuilder.setNavTextBold(jsonObject.getBoolean(key));
         }
 
         //    授权页logo
@@ -443,6 +465,8 @@ public class JVerificationPlugin extends CordovaPlugin {
             uiConfigBuilder.setNumberFieldWidth(jsonObject.getInt(key));
         } else if (setNumberFieldHeight.equals(key)) {
             uiConfigBuilder.setNumberFieldHeight(jsonObject.getInt(key));
+        } else if (setNumberTextBold.equals(key)) {
+            uiConfigBuilder.setNumberTextBold(jsonObject.getBoolean(key));
         }
 
 
@@ -465,6 +489,8 @@ public class JVerificationPlugin extends CordovaPlugin {
             uiConfigBuilder.setLogBtnTextSize(jsonObject.getInt(key));
         } else if (setLogBtnBottomOffsetY.equals(key)) {
             uiConfigBuilder.setLogBtnBottomOffsetY(jsonObject.getInt(key));
+        } else if (setLogBtnTextBold.equals(key)) {
+            uiConfigBuilder.setLogBtnTextBold(jsonObject.getBoolean(key));
         }
 
 //    授权页隐私栏
@@ -506,6 +532,10 @@ public class JVerificationPlugin extends CordovaPlugin {
             uiConfigBuilder.setPrivacyCheckboxInCenter(jsonObject.getBoolean(key));
         } else if (setPrivacyTextWidth.equals(key)) {
             uiConfigBuilder.setPrivacyTextWidth(jsonObject.getInt(key));
+        } else if (setPrivacyTextBold.equals(key)) {
+            uiConfigBuilder.setPrivacyTextBold(jsonObject.getBoolean(key));
+        } else if (setPrivacyUnderlineText.equals(key)) {
+            uiConfigBuilder.setPrivacyUnderlineText(jsonObject.getBoolean(key));
         }
         //    授权页隐私协议web页面
 
@@ -515,6 +545,8 @@ public class JVerificationPlugin extends CordovaPlugin {
             uiConfigBuilder.setPrivacyNavTitleTextColor(jsonObject.getInt(key));
         } else if (setPrivacyNavTitleTextSize.equals(key)) {
             uiConfigBuilder.setPrivacyNavTitleTextSize(jsonObject.getInt(key));
+        } else if (setPrivacyNavTitleTextBold.equals(key)) {
+            uiConfigBuilder.setPrivacyNavTitleTextBold(jsonObject.getBoolean(key));
         } else if (setAppPrivacyNavTitle1.equals(key)) {
             uiConfigBuilder.setAppPrivacyNavTitle1(jsonObject.getString(key));
         } else if (setAppPrivacyNavTitle2.equals(key)) {
@@ -544,6 +576,8 @@ public class JVerificationPlugin extends CordovaPlugin {
             uiConfigBuilder.setSloganTextSize(jsonObject.getInt(key));
         } else if (setSloganHidden.equals(key)) {
             uiConfigBuilder.setSloganHidden(jsonObject.getBoolean(key));
+        } else if (setSloganTextBold.equals(key)) {
+            uiConfigBuilder.setSloganTextBold(jsonObject.getBoolean(key));
         }
         //    授权页动画
         else if (setNeedStartAnim.equals(key)) {
@@ -557,5 +591,25 @@ public class JVerificationPlugin extends CordovaPlugin {
             uiConfigBuilder.setDialogTheme(jsonArray.getInt(0), jsonArray.getInt(1),
                     jsonArray.getInt(2), jsonArray.getInt(3), jsonArray.getBoolean(4));
         }
+    }
+
+
+    public static int getRawResourceId(Context context, String resourceName) {
+        int resourceId = getResourceId(context, resourceName, "raw");
+        if (resourceId == 0) {
+            throw new Resources.NotFoundException(resourceName);
+        } else {
+            return resourceId;
+        }
+    }
+
+    private static int getResourceId(Context context, String resourceName, String resourceType) {
+        int resouceId = 0;
+        try {
+            resouceId = context.getResources().getIdentifier(resourceName, resourceType, context.getPackageName());
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+        return resouceId;
     }
 }

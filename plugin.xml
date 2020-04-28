@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin xmlns:android="http://schemas.android.com/apk/res/android"
-    id="jg-jverification-cordova-plugin" version="1.2.6"
+    id="jg-jverification-cordova-plugin" version="1.2.7"
     xmlns="http://apache.org/cordova/ns/plugins/1.0">
     <name>JVerification-cordova-plugin</name>
 
@@ -48,6 +48,7 @@
         <framework src="CoreGraphics.framework" weak="true" />
         <framework src="MobileCoreServices.framework" weak="true" />
         <framework src="account_verify_sdk_core.framework" weak="true" />
+        <framework src="AVFoundation.framework" weak="true" />
         <framework src="TYRZSDK.framework" weak="true" />
         <framework src="account_login_sdk_noui_core.framework" weak="true" />
         <framework src="EAccountApiSDK.framework" weak="true" />
