@@ -1,6 +1,11 @@
 # JVerification-cordova-plugin
 极光认证官方支持的 cordova 插件（Android &amp; iOS）
 
+>注意：插件不支持 cordova-android 7.0.0之前版本。
+>
+>如果需要在cordova-android 7.0.0之前版本集成插件，参照[这篇文章](https://www.jianshu.com/p/23b117ca27a6)
+>
+>[Cordova Android版本与原生版本对应表](http://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#requirements-and-support)
 
 ## Install
 
