@@ -83,6 +83,7 @@
 |:-----:|:----:|:-----:|
 |appPrivacyOne|String,String|隐私条款一:数组（务必按顺序）@[条款名称,条款链接]|
 |appPrivacyTwo|String,String|隐私条款二:数组（务必按顺序）@[条款名称,条款链接]|
+|appPrivacys|[String,Array,Array,String]|隐私条款组合（务必按顺序）@["头部",["分隔符","协议名","URL","隐私协议页面navtitle"]]|
 |appPrivacyColor|int,int|隐私条款名称颜色 @[基础文字颜色,条款颜色]|
 |privacyTextFontSize|float|隐私条款字体大小，默认12|
 |privacyOffsetY |float|隐私条款Y偏移量(注:此属性为与屏幕底部的距离)|

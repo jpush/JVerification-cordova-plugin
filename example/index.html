@@ -20,7 +20,7 @@
 <html>
 <head>
     <title>Hello World</title>
-
+    <meta charset="UTF-8">
     <script type="text/javascript">
         function onDeviceReady() {
             JGJVerificationPlugin.setDebugMode(true);
@@ -53,7 +53,13 @@
                     navColor:0xff000000,
                     logBtnText:"Demo loginAuth",
                     privacyState:true,
-                    appPrivacyColor:[0xff00f000,0xff000000]
+                    appPrivacyColor:[0xff00f000,0xff000000],
+                    appPrivacys:[
+                                    "头部文字",
+                                    ["、","自定义条款1","https://www.taobao.com/","内部自定义条款1"],
+                                    ["、","自定义条款2","https://www.taobao.com/","内部自定义条款2"],
+                                    ["、","自定义条款3","https://www.taobao.com/","内部自定义条款3"],
+                                "尾部文字"]
                 }
 
                 // var json={//弹框
@@ -93,13 +99,13 @@
 <div class="app">
     <h1>Apache Cordova</h1>
 </div>
-<button onclick="JGJVerificationPlugin.loginAuth(true,function(msg){alert(msg);})">loginAuth</button>
-<button onclick="JGJVerificationPlugin.isInitSuccess(function(msg){alert(msg);})">isInitSuccess</button>
-<button onclick="JGJVerificationPlugin.checkVerifyEnable(function(msg){alert(msg);})">checkVerifyEnable</button>
-<button onclick="JGJVerificationPlugin.getToken(3000,function(msg){alert(msg);})">getToken</button>
-<button onclick="JGJVerificationPlugin.preLogin(3000,function(msg){alert(msg);})">preLogin</button>
-<button onclick="JGJVerificationPlugin.dismissLoginAuth()">dismissLoginAuth</button>
-<button onclick="javascript:setCustomUIWithConfig()">setCustomUIWithConfig</button>
+<button class="bt" onclick="JGJVerificationPlugin.loginAuth(true,function(msg){alert(msg);})">loginAuth</button>
+<button class="bt" onclick="JGJVerificationPlugin.isInitSuccess(function(msg){alert(msg);})">isInitSuccess</button>
+<button class="bt" onclick="JGJVerificationPlugin.checkVerifyEnable(function(msg){alert(msg);})">checkVerifyEnable</button>
+<button class="bt" onclick="JGJVerificationPlugin.getToken(3000,function(msg){alert(msg);})">getToken</button>
+<button class="bt" onclick="JGJVerificationPlugin.preLogin(3000,function(msg){alert(msg);})">preLogin</button>
+<button class="bt" onclick="JGJVerificationPlugin.dismissLoginAuth()">dismissLoginAuth</button>
+<button class="bt" onclick="javascript:setCustomUIWithConfig()">setCustomUIWithConfig</button>
 <script type="text/javascript" src="cordova.js"></script>
 </body>
 </html>

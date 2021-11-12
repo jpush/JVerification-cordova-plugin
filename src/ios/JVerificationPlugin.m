@@ -379,6 +379,7 @@ static  NSString* checkViewHorizontalConstraints=@"checkViewHorizontalConstraint
 //隐私协议栏
 static  NSString* appPrivacyOne=@"appPrivacyOne";
 static  NSString* appPrivacyTwo=@"appPrivacyTwo";
+static  NSString* appPrivacys=@"appPrivacys";//使用了appPrivacys则默认appPrivacyOne、appPrivacyOne失效
 static  NSString* appPrivacyColor=@"appPrivacyColor";
 static  NSString* privacyTextFontSize=@"privacyTextFontSize";
 static  NSString* privacyOffsetY=@"privacyOffsetY";
@@ -540,6 +541,8 @@ void setJVUIConfig(NSString* key ,NSDictionary *dict,
                                     UIColorFromRGBValue([colors[1] intValue]),
                                     nil];
         jvUIConfig.appPrivacyColor = appPrivacyColor;
+    }else if([key containsString:appPrivacys]){
+        jvUIConfig.appPrivacys = dict[key];
     }else if([key containsString:privacyTextFontSize]){
         jvUIConfig.privacyTextFontSize = [dict[key] floatValue];
     }else if([key containsString:privacyOffsetY]){

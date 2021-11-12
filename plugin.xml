@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin xmlns:android="http://schemas.android.com/apk/res/android"
-    id="jg-jverification-cordova-plugin" version="1.2.7"
+    id="jg-jverification-cordova-plugin" version="1.3.1"
     xmlns="http://apache.org/cordova/ns/plugins/1.0">
     <name>JVerification-cordova-plugin</name>
 
@@ -27,12 +27,12 @@
         <header-file src="src/ios/JVERIFICATIONService.h"/>
         <header-file src="src/ios/JVerificationPlugin.h"/>
         <source-file src="src/ios/JVerificationPlugin.m"/>
-        <source-file src="src/ios/jverification-ios-2.6.2.a" framework="true" />
+        <source-file src="src/ios/jverification-ios-2.7.6.a" framework="true" />
 
         <resource-file src="src/ios/JVerificationConfig.plist" />
         <resource-file src="src/ios/JVerificationResource.bundle" />
 
-        <framework src="src/ios/TYRZSDK.framework" custom="true" />
+        <framework src="src/ios/TYRZUISDK.framework" custom="true" />
         <framework src="src/ios/EAccountApiSDK.framework" custom="true" />
         <framework src="src/ios/OAuth.framework" custom="true" />
         <framework src="src/ios/account_verify_sdk_core.framework" custom="true" />
@@ -49,11 +49,11 @@
         <framework src="MobileCoreServices.framework" weak="true" />
         <framework src="account_verify_sdk_core.framework" weak="true" />
         <framework src="AVFoundation.framework" weak="true" />
-        <framework src="TYRZSDK.framework" weak="true" />
+        <framework src="TYRZUISDK.framework" weak="true" />
         <framework src="account_login_sdk_noui_core.framework" weak="true" />
         <framework src="EAccountApiSDK.framework" weak="true" />
         <framework src="OAuth.framework" weak="true" />
-
+        <framework src="Network.framework" weak="true" />
         <framework src="libresolv.tbd" />
         <framework src="libz.tbd" />
         <framework src="libc++.1.tbd" />
