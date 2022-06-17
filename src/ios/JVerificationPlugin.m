@@ -87,6 +87,7 @@
     BOOL isSetupClient = [JVERIFICATIONService isSetupClient];
     CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:isSetupClient];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+
 }
 
 
@@ -308,27 +309,21 @@
 //    NSLog(@"setCustomUIWithConfig:%@", json);
     
     NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *dict = APNativeJSONObject(data);
+    NSDictionary *dict = APNativeJSONObject(data);    
     
-    
-    
-    
-    /*移动*/
-    JVMobileUIConfig *mobileUIConfig = [[JVMobileUIConfig alloc] init];
-    /*联通*/
-    JVUnicomUIConfig *unicomUIConfig = [[JVUnicomUIConfig alloc] init];
-    /*电信*/
-    JVTelecomUIConfig *telecomUIConfig = [[JVTelecomUIConfig alloc] init];
+    JVUIConfig *uiConfig = [[JVUIConfig alloc] init];
     
     NSArray* arrayKeys = [dict allKeys];
     for(NSString * key in arrayKeys){
-        setJVUIConfig(key,dict,mobileUIConfig);
-        setJVUIConfig(key,dict,unicomUIConfig);
-        setJVUIConfig(key,dict,telecomUIConfig);
+        setJVUIConfig(key,dict,uiConfig);
     }
-    [JVERIFICATIONService customUIWithConfig:mobileUIConfig];
-    [JVERIFICATIONService customUIWithConfig:unicomUIConfig];
-    [JVERIFICATIONService customUIWithConfig:telecomUIConfig];
+    
+    [[JVERIFICATIONService customUIWithConfig:config customViews:^(UIView *customAreaView) {
+        
+        
+        
+    })] ;
+
 }
 
 //授权页面设置
@@ -413,6 +408,27 @@ static  NSString* windowCloseBtnHorizontalConstraints=@"windowCloseBtnHorizontal
 //loading
 static  NSString* loadingConstraints=@"loadingConstraints";
 static  NSString* loadingHorizontalConstraints=@"loadingHorizontalConstraints";
+
+//自定义控件
+static  NSString* customView=@"customView";
+///控件类型 Button Label
+static  NSString* widgetType=@"widgetType";
+///tag
+static  NSString* widgetId=@"widgetId";
+///frame
+static  NSString* widgetLeft=@"widgetId";
+static  NSString* widgetTop=@"widgetTop";
+static  NSString* widgetWidth=@"widgetWidth";
+static  NSString* widgetHeight=@"widgetHeight";
+///如果是按钮则选择性设置，如果是Label则默认转为Text
+static  NSString* widgetTitle=@"widgetTitle";
+static  NSString* widgetTitleFontSize=@"widgetTitleFontSize";
+static  NSString* widgetTitleFontColor=@"widgetTitleFontColor";
+///如果是按钮则选择性设置
+static  NSString* widgetNormalImage=@"widgetNormalImage";
+static  NSString* widgetDisabledImage=@"widgetDisabledImage";
+static  NSString* widgetHighlightedImage=@"widgetHighlightedImage";
+
 
 void setJVUIConfig(NSString* key ,NSDictionary *dict,
                    JVUIConfig *jvUIConfig){
@@ -628,6 +644,7 @@ void setJVUIConfig(NSString* key ,NSDictionary *dict,
         NSArray* consWindow = dict[key];
         jvUIConfig.loadingHorizontalConstraints = configConstraintWithAttributes(consWindow);
     }
+   
     
 }
 
