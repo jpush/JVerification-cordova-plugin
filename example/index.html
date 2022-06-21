@@ -30,6 +30,12 @@
             document.addEventListener("deviceready", onDeviceReady, false);
 
         }
+        
+        function btAction(tagid){
+            
+            JGJVerificationPlugin.dismissLoginAuth()
+
+        }
 
         function setCustomUIWithConfig() {
 
@@ -40,7 +46,34 @@
                     setNavColor:0xff000000,
                     setLogBtnText:"Demo loginAuth",
                     setPrivacyState:true,
-                    setAppPrivacyColor:[0xff00f000,0xff000000]
+                    setAppPrivacyColor:[0xff00f000,0xff000000],
+                    customView:[
+                        {
+                            "widgetType":"Button",
+                            "widgetId":1001,
+                            "widgetLeft":20,
+                            "widgetTop":220,
+                            "widgetWidth":120,
+                            "widgetHeight":30,
+                            "widgetTitle":"我是自定义按钮",
+                            "widgetTitleFontSize":12,
+                            "widgetTitleNormalFontColor":0xff0000,
+                            "widgetNormalImage":"logo",
+                        },
+                        {
+                            "widgetType":"Label",
+                            "widgetId":1001,
+                            "widgetLeft":20,
+                            "widgetTop":260,
+                            "widgetWidth":120,
+                            "widgetHeight":30,
+                            "widgetText":"我是自定义标签",
+                            "widgetTextFontSize":12,
+                            "widgetTextFontColor":0x663412,
+                            "widgetBackgroundColor":0x003412,
+                            "widgetTextFontAlignment":"left"
+                        }
+                    ],
                 }
 
                 json = JSON.stringify(json);
@@ -49,6 +82,33 @@
             }else if("iOS"==device.platform){
                 var c = 0xff000000;
                 // var json = "{\"navColor\":"+c+"}";
+                //自定义控件
+                // static  NSString* customView=@"customView";
+                // ///控件类型 Button Label
+                // static  NSString* widgetType=@"widgetType";
+                // ///tag
+                // static  NSString* widgetId=@"widgetId";
+                // ///frame
+                // static  NSString* widgetLeft=@"widgetId";
+                // static  NSString* widgetTop=@"widgetTop";
+                // static  NSString* widgetWidth=@"widgetWidth";
+                // static  NSString* widgetHeight=@"widgetHeight";
+                // ///如果是Button
+                // static  NSString* widgetTitle=@"widgetTitle";
+                // static  NSString* widgetTitleFontSize=@"widgetTitleFontSize";
+                // static  NSString* widgetTitleFontColor=@"widgetTitleFontColor";
+                // ///如果是Label
+                // static  NSString* widgetText=@"widgetText";
+                // static  NSString* widgetTextFontSize=@"widgetTextFontSize";
+                // static  NSString* widgetTextFontColor=@"widgetTextFontColor";
+                // static  NSString* widgetTextFontAlignment=@"widgetTextFontAlignment";//left center right
+                ///结束如果是Label
+                // static  NSString* widgetBackgroundColor=@"widgetBackgroundColor";
+                // ///如果是按钮则选择性设置
+                // static  NSString* widgetNormalImage=@"widgetNormalImage";
+                // static  NSString* widgetDisabledImage=@"widgetDisabledImage";
+                // static  NSString* widgetHighlightedImage=@"widgetHighlightedImage";
+                
                 var json={
                     navColor:0xff000000,
                     logBtnText:"Demo loginAuth",
@@ -59,37 +119,68 @@
                                     ["、","自定义条款1","https://www.taobao.com/","内部自定义条款1"],
                                     ["、","自定义条款2","https://www.taobao.com/","内部自定义条款2"],
                                     ["、","自定义条款3","https://www.taobao.com/","内部自定义条款3"],
-                                "尾部文字"]
+                                "尾部文字"],
+                    authPageBackgroundImage:"cmBackground.jpeg",
+                    customView:[
+                        {
+                            "widgetType":"Button",
+                            "widgetId":1001,
+                            "widgetLeft":20,
+                            "widgetTop":220,
+                            "widgetWidth":120,
+                            "widgetHeight":30,
+                            "widgetTitle":"我是自定义按钮",
+                            "widgetTitleFontSize":12,
+                            "widgetTitleNormalFontColor":0xff0000,
+                            "widgetNormalImage":"logo",
+                        },
+                        {
+                            "widgetType":"Label",
+                            "widgetId":1001,
+                            "widgetLeft":20,
+                            "widgetTop":260,
+                            "widgetWidth":120,
+                            "widgetHeight":30,
+                            "widgetText":"我是自定义标签",
+                            "widgetTextFontSize":12,
+                            "widgetTextFontColor":0x663412,
+                            "widgetBackgroundColor":0x003412,
+                            "widgetTextFontAlignment":"left"
+                        }
+                    ],
+                    
                 }
 
-                // var json={//弹框
-                //     navCustom:true,
-                //     autoLayout:true,
-                //     showWindow:true,
-                //     windowConstraints:[0,0,300,300],
-                //     windowBackgroundAlpha: 0.3,
-                //     //logo
-                //     logoImg:"AppIcon",
-                //     logoConstraints:[0,-100,60,60],
-                //     //number
-                //     numberConstraints:[0,-42,200,14],
-                //     //slogn
-                //     sloganConstraints:[0,-20,200,14],
-                //     //登录按钮
-                //     logBtnConstraints:[0,20,220,40],
-                //     logBtnText:"Demo loginAuth",
-                //     logBtnTextColor:0x0000FF,
-                //     windowCornerRadius:10,
-                //     privacyConstraints:[0,100,200,40],
-                //     checkViewConstraints:[-108,100,10,10],
-                //     windowCloseBtnConstraints:[-135,-135,20,20],
-                //     loadingConstraints:[0,0,20,20],
-                //     windowCloseBtnImgs:["AppIcon","AppIcon"],
-                //     windowBackgroundImage:"AppIcon"
-                // }
+
+
+<!--                var json={//弹框-->
+<!--                     navCustom:true,-->
+<!--                     autoLayout:true,-->
+<!--                     showWindow:true,-->
+<!--                     windowConstraints:[0,0,300,300],-->
+<!--                     windowBackgroundAlpha: 0.3,-->
+<!--                     //logo-->
+<!--                     logoImg:"AppIcon",-->
+<!--                     logoConstraints:[0,-100,60,60],-->
+<!--                     //number-->
+<!--                     numberConstraints:[0,-42,200,14],-->
+<!--                     //slogn-->
+<!--                     sloganConstraints:[0,-20,200,14],-->
+<!--                     //登录按钮-->
+<!--                     logBtnConstraints:[0,20,220,40],-->
+<!--                     logBtnText:"Demo loginAuth",-->
+<!--                     logBtnTextColor:0x0000FF,-->
+<!--                     windowCornerRadius:10,-->
+<!--                     privacyConstraints:[0,100,200,40],-->
+<!--                     checkViewConstraints:[-108,100,10,10],-->
+<!--                     windowCloseBtnConstraints:[-135,-135,20,20],-->
+<!--                     loadingConstraints:[0,0,20,20],-->
+<!--                     windowCloseBtnImgs:["AppIcon","AppIcon"],-->
+<!--                     windowBackgroundImage:"AppIcon"-->
+<!--                 }-->
 
                 json = JSON.stringify(json);
-                // alert(json);
+<!--                 alert(json);-->
                 JGJVerificationPlugin.setCustomUIWithConfig(json);
             }
         }

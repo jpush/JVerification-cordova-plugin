@@ -1,3 +1,4 @@
+cordova.define("jg-jverification-cordova-plugin.JGJVerificationPlugin", function(require, exports, module) {
 var exec = require('cordova/exec');
 var PLUGIN_NAME = 'JGJVerificationPlugin'
 
@@ -165,9 +166,17 @@ var JMessagePlugin = {
      */
     clearPreLoginCache: function () {
         exec(null, null, PLUGIN_NAME, 'clearPreLoginCache', [])
+    },
+    /**
+     * 打印日志
+     */
+    showLogg: function (tagid) {
+        exec(null, null, PLUGIN_NAME, 'showLogg', [tagid])
     }
 };
 
 module.exports = JMessagePlugin
 
 
+
+});

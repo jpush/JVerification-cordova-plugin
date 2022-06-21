@@ -1,8 +1,18 @@
 package cn.jiguang.cordova.verification;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -13,23 +23,31 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 
 import cn.jiguang.verifysdk.api.AuthPageEventListener;
 import cn.jiguang.verifysdk.api.JVerificationInterface;
+import cn.jiguang.verifysdk.api.JVerifyUIClickCallback;
 import cn.jiguang.verifysdk.api.JVerifyUIConfig;
 import cn.jiguang.verifysdk.api.PreLoginListener;
 import cn.jiguang.verifysdk.api.RequestCallback;
 import cn.jiguang.verifysdk.api.VerifyListener;
 
+import static com.sdk.base.module.manager.SDKManager.getContext;
+
 public class JVerificationPlugin extends CordovaPlugin {
     private static final String TAG = "JVerificationPlugin";
     private Context mContext;
-
+    private CordovaWebView cordovaWebView;
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
+        cordovaWebView = webView;
         mContext = cordova.getActivity().getApplicationContext();
     }
 
@@ -354,6 +372,33 @@ public class JVerificationPlugin extends CordovaPlugin {
     //   授权页弹窗模式 setDialogTheme
     private static final String setDialogTheme = "setDialogTheme";
 
+    //自定义控件
+    private static final String customView = "customView";
+    ///控件类型 Button Label
+    private static final String widgetType = "widgetType";
+    ///tag
+    private static final String widgetId = "widgetId";
+    ///frame
+    private static final String widgetLeft =  "widgetId";
+    private static final String widgetTop = "widgetTop";
+    private static final String widgetWidth = "widgetWidth";
+    private static final String widgetHeight = "widgetHeight";
+    ///如果是Button
+    private static final String widgetTitle = "widgetTitle";
+    private static final String widgetTitleFontSize = "widgetTitleFontSize";
+    private static final String widgetTitleFontColor = "widgetTitleFontColor";
+    ///如果是Label
+    private static final String widgetText = "widgetText";
+    private static final String widgetTextFontSize = "widgetTextFontSize";
+    private static final String widgetTextFontColor = "widgetTextFontColor";
+    private static final String widgetTextFontAlignment = "widgetTextFontAlignment";//left center right
+    private static final String widgetBackgroundColor = "widgetBackgroundColor";
+    //结束如果是Label
+    ///如果是按钮则选择性设置
+    private static final String widgetNormalImage = "widgetNormalImage";
+    private static final String widgetDisabledImage = "widgetDisabledImage";
+    private static final String widgetHighlightedImage = "widgetHighlightedImage";
+
     void setCustomUIWithConfig(JSONArray data, CallbackContext callbackContext) throws JSONException {
         JSONObject jsonObjectPortrait = new JSONObject(data.getString(0));
         JVerifyUIConfig.Builder uiConfigPortrait = getBuilder(jsonObjectPortrait);
@@ -373,6 +418,19 @@ public class JVerificationPlugin extends CordovaPlugin {
         callbackContext.success(jsonObject.toString());
     }
 
+    private  void showLogg(JSONObject jsonObject, CallbackContext callbackContext) {
+
+    }
+
+    private int dp2Pix(Context context, float dp) {
+        try {
+            float density = mContext.getResources().getDisplayMetrics().density;
+            return (int) (dp * density + 0.5F);
+        } catch (Exception e) {
+            return (int) dp;
+        }
+    }
+
     private JVerifyUIConfig.Builder getBuilder(JSONObject jsonObject) throws JSONException {
         Iterator<String> keys = jsonObject.keys();
 
@@ -381,9 +439,197 @@ public class JVerificationPlugin extends CordovaPlugin {
         while (keys.hasNext()) {
             String key = keys.next();
             setUiConfig(uiConfigBuilder, jsonObject, key);
+            //在这里添加自定义控件
+            ///自定义组件
+
+            if (key.equals("customView")){
+
+                JSONArray jsonArrayWidget = jsonObject.getJSONArray("customView");
+                for(int i = 0; i<jsonArrayWidget.length();i++){
+                    JSONObject widgetItem = jsonArrayWidget.getJSONObject(i);
+
+                    String ctype = widgetItem.getString("widgetType");
+                    if (!TextUtils.isEmpty(ctype) ) {///一定要有type
+                        if (ctype.equals("Button")) {
+
+                            Button bt = new  Button(mContext);
+
+                            int widgetLeft = widgetItem.has("widgetLeft") ? widgetItem.getInt("widgetLeft") : 20;
+                            int widgetTop = widgetItem.has("widgetTop") ? widgetItem.getInt("widgetTop") : 20 ;
+                            int widgetWidth = widgetItem.has("widgetWidth") ? widgetItem.getInt("widgetWidth") : 120 ;
+                            int widgetHeight = widgetItem.has("widgetHeight") ? widgetItem.getInt("widgetHeight") : 30;
+
+                            RelativeLayout.LayoutParams mLayoutParams = new RelativeLayout.LayoutParams(dp2Pix(mContext, widgetWidth), dp2Pix(mContext, widgetHeight));
+                            mLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+                            ///setMargins(int left, int top, int right, int bottom)
+                            mLayoutParams.setMargins(dp2Pix(mContext, widgetLeft), dp2Pix(mContext, widgetTop), 0, 0);
+                            bt.setLayoutParams(mLayoutParams);
+
+                            if (widgetItem.has("widgetTitleNormalFontColor")){
+                                bt.setTextColor(widgetItem.getInt("widgetTitleNormalFontColor"));
+                            }
+                            int widgetTitleDisabledFontColor = widgetItem.has("widgetTitleDisabledFontColor") ? widgetItem.getInt("widgetTitleDisabledFontColor") : 0xfff ;
+                            int widgetTitleHighlightedFontColor = widgetItem.has("widgetTitleHighlightedFontColor") ? widgetItem.getInt("widgetTitleHighlightedFontColor") : 0xfff ;
+
+                            int widgetTitleFontSize = widgetItem.has("widgetTitleFontSize") ? widgetItem.getInt("widgetTitleFontSize") : 0xfff ;
+                            if (widgetItem.has("widgetTitleFontSize")){
+                                bt.setTextSize(widgetItem.getInt("widgetTitleFontSize"));
+                            }
+
+                            String widgetNormalTitle = widgetItem.has("widgetNormalTitle")  ?  widgetItem.getString("widgetNormalTitle") :  "我是自定义的按钮";
+                            bt.setText(widgetNormalTitle);
+
+                            String widgetDisabledTitle = widgetItem.has("widgetDisabledTitle")  ?  widgetItem.getString("widgetDisabledTitle") : "我是自定义的按钮";
+                            String widgetHighlightedTitle = widgetItem.has("widgetHighlightedTitle")  ? widgetItem.getString("widgetDisabledTitle") :  "我是自定义的按钮";
+
+                            String widgetNormalImage = null;
+                            if(widgetItem.has("widgetNormalImage")) {
+                                widgetNormalImage = widgetItem.getString("widgetNormalImage");
+                                widgetNormalImage = copyAssetGetFilePath(widgetNormalImage);
+                                bt.setBackground(Drawable.createFromPath(widgetNormalImage));
+                            };
+
+                            String widgetDisabledImage = null;
+                            if(widgetItem.has("widgetDisabledImage")) {
+                                widgetDisabledImage = widgetItem.getString("widgetDisabledImage");
+                                widgetDisabledImage = copyAssetGetFilePath(widgetDisabledImage);
+                                bt.setBackground(Drawable.createFromPath(widgetDisabledImage));
+                            };
+
+                            String widgetHighlightedImage = null;
+                            if(widgetItem.has("widgetHighlightedImage")) {
+                                widgetHighlightedImage = widgetItem.getString("widgetHighlightedImage");
+                                widgetHighlightedImage = copyAssetGetFilePath(widgetHighlightedImage);
+                                bt.setBackground(Drawable.createFromPath(widgetHighlightedImage));
+                            };
+
+                            if (widgetItem.has("widgetBackgroundColor")){
+                                bt.setBackgroundColor(widgetItem.getInt("widgetBackgroundColor"));
+                            }
+
+                            if(widgetItem.has("widgetId")){
+                                bt.setId(widgetItem.getInt("widgetId"));
+                            }
+
+                            uiConfigBuilder.addCustomView(bt, false, new JVerifyUIClickCallback() {
+                                @Override
+                                public void onClicked(Context context, View view) {
+
+                                    if (cordovaWebView != null){
+                                        String url = "javascript:"+"btAction("+bt.getId()+")";
+                                        cordovaWebView.loadUrl(url);
+                                    }
+
+                                }
+                            });
+
+
+                        }else if (ctype.equals("Label")){
+
+
+                            TextView lb = new TextView(mContext);
+
+                            int widgetLeft = widgetItem.has("widgetLeft") ? widgetItem.getInt("widgetLeft") : 20;
+                            int widgetTop = 160  ;
+                            int widgetWidth = widgetItem.has("widgetWidth") ? widgetItem.getInt("widgetWidth") : 120 ;
+                            int widgetHeight = widgetItem.has("widgetHeight") ? widgetItem.getInt("widgetHeight") : 30;
+
+
+                            RelativeLayout.LayoutParams mLayoutParams = new RelativeLayout.LayoutParams(dp2Pix(mContext, widgetWidth), dp2Pix(mContext, widgetHeight));
+                            mLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+                            ///setMargins(int left, int top, int right, int bottom)
+                            mLayoutParams.setMargins(dp2Pix(mContext, widgetLeft), dp2Pix(mContext, widgetTop), 0, 0);
+                            lb.setLayoutParams(mLayoutParams);
+
+
+                            String widgetText = widgetItem.has("widgetText") ? widgetItem.getString("widgetText") :  "我是自定义的标签" ;
+                            lb.setText(widgetText);
+//
+                            if (widgetItem.has("widgetTextFontSize")){
+                                int widgetTextFontSize = widgetItem.getInt("widgetTextFontSize") ;
+                                lb.setTextSize(widgetTextFontSize);
+                            }
+
+                            if (widgetItem.has("widgetTextFontColor")){
+                                int widgetTextFontColor =  widgetItem.getInt("widgetTextFontColor") ;
+                                lb.setTextColor(Color.RED);
+                            }
+
+                            String widgetTextFontAlignment =  widgetItem.has("widgetTextFontAlignment") ? widgetItem.getString("widgetTextFontAlignment") :  "left" ;
+                            int alignment = widgetTextFontAlignment.equals("left") ? ( widgetTextFontAlignment.equals("center")  ? 3 : 6) : 6;
+                            if (alignment == 6){
+                                lb.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+                            }else if (alignment == 5){
+                                lb.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
+                            }else {
+                                lb.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                            }
+
+
+                            if(widgetItem.has("widgetTitleFontSize")){
+                                int widgetTitleFontSize = widgetItem.getInt("widgetTitleFontSize") ;
+                                lb.setTextSize(widgetTitleFontSize);
+                            }
+
+                            if (widgetItem.has("widgetBackgroundColor")){
+                                int widgetBackgroundColor = widgetItem.getInt("widgetBackgroundColor") ;
+                                lb.setBackgroundColor(widgetBackgroundColor);
+                            }
+
+                            if(widgetItem.has("widgetId")){
+                                lb.setId(widgetItem.getInt("widgetId"));
+                            }
+
+                            uiConfigBuilder.addCustomView(lb,false,null);
+
+                        }
+                    }
+
+                }
+
+            }
         }
+
         return uiConfigBuilder;
     }
+
+    private String copyAssetGetFilePath(String fileName) {
+        try {
+            File cacheDir = mContext.getCacheDir();
+            if (!cacheDir.exists()) {
+                cacheDir.mkdirs();
+            }
+            File outFile = new File(cacheDir, fileName);
+            if (!outFile.exists()) {
+                boolean res = outFile.createNewFile();
+                if (!res) {
+                    return null;
+                }
+            } else {
+                if (outFile.length() > 10) {//表示已经写入一次
+                    return outFile.getPath();
+                }
+            }
+            InputStream is = mContext.getAssets().open("img"+File.separator+fileName);
+            FileOutputStream fos = new FileOutputStream(outFile);
+            byte[] buffer = new byte[1024];
+            int byteCount;
+            while ((byteCount = is.read(buffer)) != -1) {
+                fos.write(buffer, 0, byteCount);
+            }
+            fos.flush();
+            is.close();
+            fos.close();
+            return outFile.getPath();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+
+
 
     private void setUiConfig(JVerifyUIConfig.Builder uiConfigBuilder, JSONObject jsonObject, String key) throws JSONException {
         //设置授权页背景
