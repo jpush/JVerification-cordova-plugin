@@ -1,9 +1,9 @@
 {
-  "name": "jg-jverification-cordova-plugin",
+  "name": "jiguang-jverification-cordova-plugin",
   "version": "1.3.2",
   "description": "JVerification-cordova-plugin",
   "cordova": {
-    "id": "jg-jverification-cordova-plugin",
+    "id": "jiguang-jverification-cordova-plugin",
     "platforms": [
       "ios",
       "android"
