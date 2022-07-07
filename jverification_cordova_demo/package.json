@@ -17,7 +17,7 @@
     "cordova-ios": "^6.2.0",
     "cordova-plugin-device": "^2.1.0",
     "cordova-plugin-jcore": "^1.4.1",
-    "jg-jverification-cordova-plugin": "github:jpush/JVerification-cordova-plugin"
+    "jgnpmjs-jverification-cordova-plugin": "github:jpush/JVerification-cordova-plugin"
   },
   "cordova": {
     "platforms": [
@@ -25,7 +25,7 @@
       "android"
     ],
     "plugins": {
-      "jg-jverification-cordova-plugin": {
+      "jiguang-jverification-cordova-plugin": {
         "APP_KEY": "59705dfaf33d8f339047b670",
         "CHANNEL": "developer-default"
       }
