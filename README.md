@@ -12,7 +12,7 @@
 - 通过 cordova plugin 安装：
 
 ```shell
-cordova plugin add jiguang-jverification-cordova-plugin --variable APP_KEY=极光appKey
+cordova plugin add jgnpmjs-jverification-cordova-plugin --variable APP_KEY=极光appKey
 ```
 
 - 或直接通过 url 安装：
