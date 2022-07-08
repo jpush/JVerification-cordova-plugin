@@ -1,9 +1,9 @@
-cordova.define("jiguagn-jverification-cordova-plugin.JGJVerificationPlugin", function(require, exports, module) {
+cordova.define("jgnpmjs-jverification-cordova-plugin.JGJVerificationPlugin", function(require, exports, module) {
 var exec = require('cordova/exec');
 var PLUGIN_NAME = 'JGJVerificationPlugin'
 
 
-var JMessagePlugin = {
+var JGJVerificationPlugin = {
     /**
      * 初始化接口。
      * @param {function} listener = function (String){}
@@ -175,7 +175,7 @@ var JMessagePlugin = {
     }
 };
 
-module.exports = JMessagePlugin
+module.exports = JGJVerificationPlugin
 
 
 

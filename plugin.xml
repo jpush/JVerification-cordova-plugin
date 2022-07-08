@@ -12,15 +12,15 @@
     <preference name="CHANNEL" default="developer-default" />
 
 
-    <js-module name="JGNpmVerificationPlugin" src="www/Jiguang-JVerification-cordova-plugin.js">
-        <clobbers target="JGNpmVerificationPlugin" />
+    <js-module name="JGJVerificationPlugin" src="www/jgnpmjs-JVerification-cordova-plugin.js">
+        <clobbers target="JGJVerificationPlugin" />
     </js-module>
 
 
 <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="JGNpmVerificationPlugin">
-                <param name="ios-package" value="JGNpmVerificationPlugin"/>
+            <feature name="JGJVerificationPlugin">
+                <param name="ios-package" value="JGJVerificationPlugin"/>
             </feature>
         </config-file>
 
@@ -70,7 +70,7 @@
 
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
-            <feature name="JGNpmVerificationPlugin">
+            <feature name="JGJVerificationPlugin">
                 <param name="android-package"
                     value="cn.jiguang.cordova.verification.JGNpmVerificationPlugin" />
             </feature>
