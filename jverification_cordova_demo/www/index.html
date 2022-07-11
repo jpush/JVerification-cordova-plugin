@@ -23,28 +23,17 @@
     <meta charset="UTF-8">
     <script type="text/javascript">
         function onDeviceReady() {
-<<<<<<< HEAD
-            JVerificationPlugin.setDebugMode(true);
-            JVerificationPlugin.init();
-=======
             JGJVerificationPlugin.setDebugMode(true);
             JGJVerificationPlugin.init();
->>>>>>> 85fd29c ( 增加自定义控件添加接口-ios)
         }
         function onLoad() {
             document.addEventListener("deviceready", onDeviceReady, false);
 
         }
         
-<<<<<<< HEAD
         function btAction(tagid){
             
-            JVerificationPlugin.dismissLoginAuth()
-=======
-        function btAction(){
-            
             JGJVerificationPlugin.dismissLoginAuth()
->>>>>>> 85fd29c ( 增加自定义控件添加接口-ios)
 
         }
 
@@ -57,7 +46,6 @@
                     setNavColor:0xff000000,
                     setLogBtnText:"Demo loginAuth",
                     setPrivacyState:true,
-<<<<<<< HEAD
                     setAppPrivacyColor:[0xff00f000,0xff000000],
                     customView:[
                         {
@@ -86,18 +74,11 @@
                             "widgetTextFontAlignment":"left"
                         }
                     ],
-=======
-                    setAppPrivacyColor:[0xff00f000,0xff000000]
->>>>>>> 85fd29c ( 增加自定义控件添加接口-ios)
                 }
 
                 json = JSON.stringify(json);
                 // alert(json);
-<<<<<<< HEAD
-                JVerificationPlugin.setCustomUIWithConfig(json);
-=======
                 JGJVerificationPlugin.setCustomUIWithConfig(json);
->>>>>>> 85fd29c ( 增加自定义控件添加接口-ios)
             }else if("iOS"==device.platform){
                 var c = 0xff000000;
                 // var json = "{\"navColor\":"+c+"}";
@@ -200,11 +181,7 @@
 
                 json = JSON.stringify(json);
 <!--                 alert(json);-->
-<<<<<<< HEAD
-                JVerificationPlugin.setCustomUIWithConfig(json);
-=======
                 JGJVerificationPlugin.setCustomUIWithConfig(json);
->>>>>>> 85fd29c ( 增加自定义控件添加接口-ios)
             }
         }
     </script>
@@ -213,21 +190,12 @@
 <div class="app">
     <h1>Apache Cordova</h1>
 </div>
-<<<<<<< HEAD
-<button class="bt" onclick="JVerificationPlugin.loginAuth(true,function(msg){alert(msg);})">loginAuth</button>
-<button class="bt" onclick="JVerificationPlugin.isInitSuccess(function(msg){alert(msg);})">isInitSuccess</button>
-<button class="bt" onclick="JVerificationPlugin.checkVerifyEnable(function(msg){alert(msg);})">checkVerifyEnable</button>
-<button class="bt" onclick="JVerificationPlugin.getToken(3000,function(msg){alert(msg);})">getToken</button>
-<button class="bt" onclick="JVerificationPlugin.preLogin(3000,function(msg){alert(msg);})">preLogin</button>
-<button class="bt" onclick="JVerificationPlugin.dismissLoginAuth()">dismissLoginAuth</button>
-=======
 <button class="bt" onclick="JGJVerificationPlugin.loginAuth(true,function(msg){alert(msg);})">loginAuth</button>
 <button class="bt" onclick="JGJVerificationPlugin.isInitSuccess(function(msg){alert(msg);})">isInitSuccess</button>
 <button class="bt" onclick="JGJVerificationPlugin.checkVerifyEnable(function(msg){alert(msg);})">checkVerifyEnable</button>
 <button class="bt" onclick="JGJVerificationPlugin.getToken(3000,function(msg){alert(msg);})">getToken</button>
 <button class="bt" onclick="JGJVerificationPlugin.preLogin(3000,function(msg){alert(msg);})">preLogin</button>
 <button class="bt" onclick="JGJVerificationPlugin.dismissLoginAuth()">dismissLoginAuth</button>
->>>>>>> 85fd29c ( 增加自定义控件添加接口-ios)
 <button class="bt" onclick="javascript:setCustomUIWithConfig()">setCustomUIWithConfig</button>
 <script type="text/javascript" src="cordova.js"></script>
 </body>
