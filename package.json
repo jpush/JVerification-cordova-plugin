@@ -1,9 +1,9 @@
 {
-  "name": "jgnpmjs-jverification-cordova-plugin",
+  "name": "jgnpm-jverification-cordova-plugin",
   "version": "1.3.4",
-  "description": "jgnpmjs-JVerification-cordova-plugin",
+  "description": "jgnpm-JVerification-cordova-plugin",
   "cordova": {
-    "id": "jgnpmjs-jverification-cordova-plugin",
+    "id": "jgnpm-jverification-cordova-plugin",
     "platforms": [
       "ios",
       "android"
@@ -25,7 +25,7 @@
     "cordova-plugin-device": "*",
     "cordova-plugin-jcore": ">=1.3.1"
   },
-  "author": "jgnpmjs",
+  "author": "jgnpm",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jpush/JVerification-cordova-plugin/issues"

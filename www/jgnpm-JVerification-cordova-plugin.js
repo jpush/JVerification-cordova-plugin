@@ -1,4 +1,4 @@
-cordova.define("jgnpmjs-jverification-cordova-plugin.JGJVerificationPlugin", function(require, exports, module) {
+cordova.define("jgnpm-jverification-cordova-plugin.JGJVerificationPlugin", function(require, exports, module) {
 var exec = require('cordova/exec');
 var PLUGIN_NAME = 'JGJVerificationPlugin'
 
