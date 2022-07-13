@@ -1,5 +1,5 @@
 //
-//  JVerificationPlugin.h
+//  JGVerificationPlugin.h
 //  HelloWorld
 //
 //  Created by 韦瑞杨 on 2019/7/15.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JGJVerificationPlugin : CDVPlugin
+@interface JGVerificationPlugin : CDVPlugin
 
 @end
 

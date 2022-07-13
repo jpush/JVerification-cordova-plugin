@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin xmlns:android="http://schemas.android.com/apk/res/android"
-    id="jgnpm-jverification-cordova-plugin" version="1.3.8"
+    id="jgnpm-jverification-cordova-plugin" version="1.3.9"
     xmlns="http://apache.org/cordova/ns/plugins/1.0">
     <name>@jgnpm-JVerification-cordova-plugin</name>
 
@@ -12,15 +12,15 @@
     <preference name="CHANNEL" default="developer-default" />
 
 
-    <js-module name="JGJVerificationPlugin" src="www/jgnpm-JVerification-cordova-plugin.js">
-        <clobbers target="JGJVerificationPlugin" />
+    <js-module name="JGVerificationPlugin" src="www/jgnpm-JVerification-cordova-plugin.js">
+        <clobbers target="JGVerificationPlugin" />
     </js-module>
 
 
 <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="JGJVerificationPlugin">
-                <param name="ios-package" value="JGJVerificationPlugin"/>
+            <feature name="JGVerificationPlugin">
+                <param name="ios-package" value="JGVerificationPlugin"/>
             </feature>
         </config-file>
 
@@ -60,7 +60,7 @@
         <framework src="libsqlite3.tbd" />
 
 
-        <config-file target="*JGJVerificationPlugin.plist" parent="Appkey">
+        <config-file target="*JGVerificationPlugin.plist" parent="Appkey">
           <string>$APP_KEY</string>
         </config-file>
 
@@ -70,9 +70,9 @@
 
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
-            <feature name="JGJVerificationPlugin">
+            <feature name="JGVerificationPlugin">
                 <param name="android-package"
-                    value="cn.jiguang.cordova.verification.JGJVerificationPlugin" />
+                    value="cn.jiguang.cordova.verification.JGVerificationPlugin" />
             </feature>
         </config-file>
 

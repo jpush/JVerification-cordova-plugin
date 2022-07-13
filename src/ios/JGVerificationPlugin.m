@@ -1,11 +1,11 @@
 //
-//  JVerificationPlugin.m
+//  JGVerificationPlugin.m
 //  HelloWorld
 //
 //  Created by 韦瑞杨 on 2019/7/15.
 //
 
-#import "JGJVerificationPlugin.h"
+#import "JGVerificationPlugin.h"
 #import <Cordova/CDVPlugin.h>
 //引入JVERIFICATIONService.h头文件
 #import "JVERIFICATIONService.h"
@@ -15,12 +15,12 @@
 #define UIColorFromRGBValue(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 
-@implementation JVerificationPlugin
+@implementation JGVerificationPlugin
 
 
 - (void)init:(CDVInvokedUrlCommand*)command
 {
-    NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"JGJVerificationPlugin" ofType:@"plist"];
+    NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"JGVerificationPlugin" ofType:@"plist"];
     NSMutableDictionary *dataDic = [[NSMutableDictionary alloc]initWithContentsOfFile:plistPath];
 //    NSLog(@"%@",dataDic);//直接打印数据
     
