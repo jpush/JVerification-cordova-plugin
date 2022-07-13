@@ -610,7 +610,7 @@ public class JGVerificationPlugin extends CordovaPlugin {
                     return outFile.getPath();
                 }
             }
-            InputStream is = mContext.getAssets().open("img"+File.separator+fileName);
+            InputStream is = mContext.getAssets().open("www"+File.separator+"img"+File.separator+fileName);
             FileOutputStream fos = new FileOutputStream(outFile);
             byte[] buffer = new byte[1024];
             int byteCount;

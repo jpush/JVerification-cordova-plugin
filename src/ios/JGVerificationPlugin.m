@@ -385,6 +385,7 @@ UIImage *imageFromWWWImg(NSString*imageName){
                             UIColor *widgetBackgroundColor = UIColorFromRGBValue([customViewDict[@"widgetBackgroundColor"] intValue]) ;
                             [button setBackgroundColor:widgetBackgroundColor];
                         }
+                        [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
                         [customAreaView addSubview:button];
                     }
                     if ([widgetType isEqualToString:@"Label"]) {
@@ -444,6 +445,13 @@ UIImage *imageFromWWWImg(NSString*imageName){
         
     }] ;
 
+}
+
+-(void)buttonAction:(UIButton*)bt{
+    
+    NSString *jsStr = [NSString stringWithFormat:@"javascript:btAction(%d)",(int)bt.tag];
+    [self.commandDelegate evalJs:jsStr];
+    //String url = "javascript:"+"btAction("+bt.getId()+")";
 }
 
 //授权页面设置
