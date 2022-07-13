@@ -7,6 +7,7 @@
 
 #import "JGVerificationPlugin.h"
 #import <Cordova/CDVPlugin.h>
+#import <UIKit/UIKit.h>
 //引入JVERIFICATIONService.h头文件
 #import "JVERIFICATIONService.h"
 // 如果需要使用 idfa 功能所需要引入的头文件（可选）
@@ -17,6 +18,11 @@
 
 @implementation JGVerificationPlugin
 
+UIImage *imageFromWWWImg(NSString*imageName){
+    NSString *imagePath = [NSString stringWithFormat:@"%@/www/img/%@",[NSBundle mainBundle].bundlePath,imageName];
+    UIImage *img = [UIImage imageWithContentsOfFile:imagePath];
+    return img;
+}
 
 - (void)init:(CDVInvokedUrlCommand*)command
 {
@@ -318,11 +324,125 @@
         setJVUIConfig(key,dict,uiConfig);
     }
     
-    [[JVERIFICATIONService customUIWithConfig:config customViews:^(UIView *customAreaView) {
+    [JVERIFICATIONService customUIWithConfig:uiConfig customViews:^(UIView *customAreaView) {
         
+        if ([arrayKeys containsObject:@"customView"]) {
+            NSArray *customViews = dict[@"customView"];
+            for (NSDictionary *customViewDict in customViews) {
+                if (!customViewDict || ![customViewDict isKindOfClass:[NSDictionary class]] || [customViewDict allKeys] == 0) {
+                    continue;
+                }
+                NSString *widgetType = customViewDict[@"widgetType"];
+                if (widgetType && [widgetType isKindOfClass:[NSString class]]) {
+                    if ([widgetType isEqualToString:@"Button"]) {
+                        UIButton *button = [[UIButton alloc] init];
+                        if ([[customViewDict allKeys] containsObject:@"widgetId"]) {
+                            NSInteger widgetId = [customViewDict[@"widgetId"] integerValue];
+                            [button setTag:widgetId];
+                        }
+                        CGFloat x = 0.0;
+                        CGFloat y = 0.0;
+                        CGFloat w = 180.0;
+                        CGFloat h = 30.0;
+                        if ([[customViewDict allKeys] containsObject:@"widgetLeft"]) {
+                            x = [customViewDict[@"widgetLeft"] floatValue];
+                        }
+                        if ([[customViewDict allKeys] containsObject:@"widgetTop"]) {
+                            y = [customViewDict[@"widgetTop"] floatValue];
+                        }
+                        if ([[customViewDict allKeys] containsObject:@"widgetWidth"]) {
+                            w = [customViewDict[@"widgetWidth"] floatValue];
+                        }
+                        if ([[customViewDict allKeys] containsObject:@"widgetWidth"]) {
+                            h = [customViewDict[@"widgetWidth"] floatValue];
+                        }
+                        [button setFrame:CGRectMake(x,y,w,h)];
+                        if ([[customViewDict allKeys] containsObject:@"widgetTitle"]) {
+                            NSString *widgetTitle = customViewDict[@"widgetTitle"];
+                            [button setTitle:widgetTitle forState:UIControlStateNormal];
+                        }
+                        if ([[customViewDict allKeys] containsObject:@"widgetTitleFontSize"]) {
+                            NSInteger widgetTitleFontSize = [customViewDict[@"widgetTitleFontSize"] integerValue];
+                            [button.titleLabel setFont:[UIFont systemFontOfSize:widgetTitleFontSize]];
+                        }
+                        if ([[customViewDict allKeys] containsObject:@"widgetTitleFontColor"]) {
+                            UIColor *widgetTitleFontColor = UIColorFromRGBValue([customViewDict[@""] intValue]) ;
+                            [button.titleLabel setTextColor:widgetTitleFontColor];
+                        }
+                        if ([[customViewDict allKeys] containsObject:@"widgetNormalImage"]) {
+                            UIImage *widgetNormalImage = imageFromWWWImg(customViewDict[@"widgetNormalImage"]) ;
+                            [button setImage:widgetNormalImage forState:UIControlStateNormal];
+                        }
+                        if ([[customViewDict allKeys] containsObject:@"widgetDisabledImage"]) {
+                            UIImage *widgetDisabledImage = imageFromWWWImg(customViewDict[@"widgetDisabledImage"]) ;
+                            [button setImage:widgetDisabledImage forState:UIControlStateDisabled];
+                        }
+                        if ([[customViewDict allKeys] containsObject:@"widgetHighlightedImage"]) {
+                            UIImage *widgetHighlightedImage = imageFromWWWImg(customViewDict[@"widgetHighlightedImage"]) ;
+                            [button setImage:widgetHighlightedImage forState:UIControlStateHighlighted];
+                        }
+                        if ([[customViewDict allKeys] containsObject:@"widgetBackgroundColor"]) {
+                            UIColor *widgetBackgroundColor = UIColorFromRGBValue([customViewDict[@"widgetBackgroundColor"] intValue]) ;
+                            [button setBackgroundColor:widgetBackgroundColor];
+                        }
+                        [customAreaView addSubview:button];
+                    }
+                    if ([widgetType isEqualToString:@"Label"]) {
+                        UILabel *label = [[UILabel alloc] init];
+                        if ([[customViewDict allKeys] containsObject:@"widgetId"]) {
+                            NSInteger widgetId = [customViewDict[@"widgetId"] integerValue];
+                            [label setTag:widgetId];
+                        }
+                        CGFloat x = 0.0;
+                        CGFloat y = 0.0;
+                        CGFloat w = 180.0;
+                        CGFloat h = 30.0;
+                        if ([[customViewDict allKeys] containsObject:@"widgetLeft"]) {
+                            x = [customViewDict[@"widgetLeft"] floatValue];
+                        }
+                        if ([[customViewDict allKeys] containsObject:@"widgetTop"]) {
+                            y = [customViewDict[@"widgetTop"] floatValue];
+                        }
+                        if ([[customViewDict allKeys] containsObject:@"widgetWidth"]) {
+                            w = [customViewDict[@"widgetWidth"] floatValue];
+                        }
+                        if ([[customViewDict allKeys] containsObject:@"widgetWidth"]) {
+                            h = [customViewDict[@"widgetWidth"] floatValue];
+                        }
+                        [label setFrame:CGRectMake(x,y,w,h)];
+                        if ([[customViewDict allKeys] containsObject:@"widgetText"]) {
+                            NSString *widgetText = customViewDict[@"widgetText"];
+                            [label setText:widgetText];
+                        }
+                        if ([[customViewDict allKeys] containsObject:@"widgetTextFontSize"]) {
+                            NSInteger widgetTextFontSize = [customViewDict[@"widgetTextFontSize"] integerValue];
+                            [label setFont:[UIFont systemFontOfSize:widgetTextFontSize]];
+                        }
+                        if ([[customViewDict allKeys] containsObject:@"widgetTextFontColor"]) {
+                            UIColor *widgetTextFontColor = UIColorFromRGBValue([customViewDict[@"widgetTextFontColor"] intValue]) ;
+                            [label setTextColor:widgetTextFontColor];
+                        }
+                        if ([[customViewDict allKeys] containsObject:@"widgetTextFontAlignment"]) {
+                            NSString *widgetTextFontAlignment = customViewDict[@"widgetTextFontAlignment"];
+                            if (widgetTextFontAlignment && [widgetTextFontAlignment isKindOfClass:[NSString class]] && [widgetTextFontAlignment isEqualToString:@"left"]) {
+                                [label setTextAlignment:NSTextAlignmentLeft];
+                            }else if (widgetTextFontAlignment && [widgetTextFontAlignment isKindOfClass:[NSString class]] && [widgetTextFontAlignment isEqualToString:@"right"]){
+                                [label setTextAlignment:NSTextAlignmentRight];
+                            }else{
+                                [label setTextAlignment:NSTextAlignmentCenter];
+                            }
+                        }
+                        if ([[customViewDict allKeys] containsObject:@"widgetBackgroundColor"]) {
+                            UIColor *widgetBackgroundColor = UIColorFromRGBValue([customViewDict[@"widgetBackgroundColor"] intValue]) ;
+                            [label setBackgroundColor:widgetBackgroundColor];
+                        }
+                        [customAreaView addSubview:label];
+                    }
+                }
+            }
+        }
         
-        
-    })] ;
+    }] ;
 
 }
 
@@ -409,33 +529,38 @@ static  NSString* windowCloseBtnHorizontalConstraints=@"windowCloseBtnHorizontal
 static  NSString* loadingConstraints=@"loadingConstraints";
 static  NSString* loadingHorizontalConstraints=@"loadingHorizontalConstraints";
 
-//自定义控件
-static  NSString* customView=@"customView";
-///控件类型 Button Label
-static  NSString* widgetType=@"widgetType";
-///tag
-static  NSString* widgetId=@"widgetId";
-///frame
-static  NSString* widgetLeft=@"widgetId";
-static  NSString* widgetTop=@"widgetTop";
-static  NSString* widgetWidth=@"widgetWidth";
-static  NSString* widgetHeight=@"widgetHeight";
-///如果是按钮则选择性设置，如果是Label则默认转为Text
-static  NSString* widgetTitle=@"widgetTitle";
-static  NSString* widgetTitleFontSize=@"widgetTitleFontSize";
-static  NSString* widgetTitleFontColor=@"widgetTitleFontColor";
-///如果是按钮则选择性设置
-static  NSString* widgetNormalImage=@"widgetNormalImage";
-static  NSString* widgetDisabledImage=@"widgetDisabledImage";
-static  NSString* widgetHighlightedImage=@"widgetHighlightedImage";
-
+// static  NSString* customView=@"customView";
+ ///控件类型 Button Label
+ static  NSString* widgetType=@"widgetType";
+ ///tag
+ static  NSString* widgetId=@"widgetId";
+ ///frame
+ static  NSString* widgetLeft=@"widgetId";
+ static  NSString* widgetTop=@"widgetTop";
+ static  NSString* widgetWidth=@"widgetWidth";
+ static  NSString* widgetHeight=@"widgetHeight";
+ ///如果是Button
+ static  NSString* widgetTitle=@"widgetTitle";
+ static  NSString* widgetTitleFontSize=@"widgetTitleFontSize";
+ static  NSString* widgetTitleFontColor=@"widgetTitleFontColor";
+ ///如果是Label
+ static  NSString* widgetText=@"widgetText";
+ static  NSString* widgetTextFontSize=@"widgetTextFontSize";
+ static  NSString* widgetTextFontColor=@"widgetTextFontColor";
+ static  NSString* widgetTextFontAlignment=@"widgetTextFontAlignment";//left center right
+///结束如果是Label
+ static  NSString* widgetBackgroundColor=@"widgetBackgroundColor";
+ ///如果是按钮则选择性设置
+ static  NSString* widgetNormalImage=@"widgetNormalImage";
+ static  NSString* widgetDisabledImage=@"widgetDisabledImage";
+ static  NSString* widgetHighlightedImage=@"widgetHighlightedImage";
 
 void setJVUIConfig(NSString* key ,NSDictionary *dict,
                    JVUIConfig *jvUIConfig){
     
     //授权页面设置
     if ([key containsString:authPageBackgroundImage]) {
-        jvUIConfig.authPageBackgroundImage = [UIImage imageNamed:dict[key]];
+        jvUIConfig.authPageBackgroundImage = imageFromWWWImg(dict[key]);
     }else if([key containsString:authPageGifImagePath]){
         jvUIConfig.authPageGifImagePath = dict[key];
     }else if([key containsString:setVideoBackgroudResource]){
@@ -460,7 +585,7 @@ void setJVUIConfig(NSString* key ,NSDictionary *dict,
         NSArray* textArry = dict[key];
         jvUIConfig.navText = getNSAttributedString(textArry);
     }else if([key containsString:navReturnImg]){
-        jvUIConfig.navReturnImg = [UIImage imageNamed:dict[key]];
+        jvUIConfig.navReturnImg = imageFromWWWImg(dict[key]);
     }else if([key containsString:prefersStatusBarHidden]){
         jvUIConfig.prefersStatusBarHidden =[dict[key] boolValue];
     }else if([key containsString:navTransparent]){
@@ -470,12 +595,12 @@ void setJVUIConfig(NSString* key ,NSDictionary *dict,
     }else if([key containsString:navDividingLineHidden]){
         jvUIConfig.navDividingLineHidden =[dict[key] boolValue];
     }else if([key containsString:navBarBackGroundImage]){
-        jvUIConfig.navBarBackGroundImage = [UIImage imageNamed:dict[key]];
+        jvUIConfig.navBarBackGroundImage = imageFromWWWImg(dict[key]);
     }
     
 //    LOGO
     else if([key containsString:logoImg]){
-        jvUIConfig.logoImg = [UIImage imageNamed:dict[key]];
+        jvUIConfig.logoImg = imageFromWWWImg(dict[key]);
     }else if([key containsString:logoWidth]){
         jvUIConfig.logoWidth =  [dict[key] floatValue];//CGFloat ;
     }else if([key containsString:logoHeight]){
@@ -502,9 +627,9 @@ void setJVUIConfig(NSString* key ,NSDictionary *dict,
     }else if([key containsString:logBtnImgs]){
         NSArray* imgPaths = dict[key];
         NSArray* logBtnImgs = [[NSArray alloc] initWithObjects:
-                               [UIImage imageNamed:imgPaths[0]],
-                               [UIImage imageNamed:imgPaths[1]],
-                               [UIImage imageNamed:imgPaths[2]],
+                               imageFromWWWImg(imgPaths[0]),
+                               imageFromWWWImg(imgPaths[1]),
+                               imageFromWWWImg(imgPaths[2]),
                                nil];
         jvUIConfig.logBtnImgs = logBtnImgs;
     }else if([key containsString:logBtnConstraints]){
@@ -530,9 +655,9 @@ void setJVUIConfig(NSString* key ,NSDictionary *dict,
     }
 //    checkBox
     else if([key containsString:uncheckedImg]){
-        jvUIConfig.uncheckedImg = [UIImage imageNamed:dict[key]];
+        jvUIConfig.uncheckedImg = imageFromWWWImg(dict[key]);
     }else if([key containsString:checkedImg]){
-        jvUIConfig.checkedImg = [UIImage imageNamed:dict[key]];
+        jvUIConfig.checkedImg = imageFromWWWImg(dict[key]);
     }else if([key containsString:checkViewHidden]){
         jvUIConfig.checkViewHidden = [dict[key] boolValue];
     }else if([key containsString:privacyState]){
@@ -590,7 +715,7 @@ void setJVUIConfig(NSString* key ,NSDictionary *dict,
         NSArray* textArry = dict[key];
         jvUIConfig.secondPrivacyAgreementNavText = getNSAttributedString(textArry);
     }else if([key containsString:agreementNavReturnImage]){
-        jvUIConfig.agreementNavReturnImage = [UIImage imageNamed:dict[key]];
+        jvUIConfig.agreementNavReturnImage = imageFromWWWImg(dict[key]);
     }
 //    slogan
     else if([key containsString:sloganOffsetY]){
@@ -608,7 +733,7 @@ void setJVUIConfig(NSString* key ,NSDictionary *dict,
     else if([key containsString:showWindow]){
         jvUIConfig.showWindow = [dict[key] boolValue];
     }else if([key containsString:windowBackgroundImage]){
-        jvUIConfig.windowBackgroundImage =  [UIImage imageNamed:dict[key]];
+        jvUIConfig.windowBackgroundImage =  imageFromWWWImg(dict[key]);
     }else if([key containsString:windowBackgroundAlpha]){
         jvUIConfig.windowBackgroundAlpha = [dict[key] floatValue];
     }else if([key containsString:windowCornerRadius]){
@@ -623,7 +748,7 @@ void setJVUIConfig(NSString* key ,NSDictionary *dict,
         NSArray* imageNames = dict[key];
         NSMutableArray *images = [NSMutableArray arrayWithCapacity:3];
         for (int i = 0; i< imageNames.count; i++) {
-            UIImage *closeImage  = [UIImage imageNamed:imageNames[i]];
+            UIImage *closeImage  = imageFromWWWImg(imageNames[i]);
             if (closeImage) {
                 [images addObject:closeImage];
             }
@@ -647,6 +772,7 @@ void setJVUIConfig(NSString* key ,NSDictionary *dict,
    
     
 }
+
 
 
 NSAttributedString *getNSAttributedString(NSArray* textArry ){
