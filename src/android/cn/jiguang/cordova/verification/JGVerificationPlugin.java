@@ -40,8 +40,8 @@ import cn.jiguang.verifysdk.api.VerifyListener;
 
 import static com.sdk.base.module.manager.SDKManager.getContext;
 
-public class JVerificationPlugin extends CordovaPlugin {
-    private static final String TAG = "JVerificationPlugin";
+public class JGVerificationPlugin extends CordovaPlugin {
+    private static final String TAG = "JGVerificationPlugin";
     private Context mContext;
     private CordovaWebView cordovaWebView;
     @Override
@@ -58,9 +58,9 @@ public class JVerificationPlugin extends CordovaPlugin {
             @Override
             public void run() {
                 try {
-                    Method method = JVerificationPlugin.class.getDeclaredMethod(action, JSONArray.class,
+                    Method method = JGVerificationPlugin.class.getDeclaredMethod(action, JSONArray.class,
                             CallbackContext.class);
-                    method.invoke(JVerificationPlugin.this, args, callbackContext);
+                    method.invoke(JGVerificationPlugin.this, args, callbackContext);
                 } catch (Throwable e) {
                     e.printStackTrace();
                     Log.e(TAG, e.toString());
