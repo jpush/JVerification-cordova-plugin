@@ -1,7 +1,5 @@
-cordova.define("jgnpm-jverification-cordova-plugin.JGVerificationPlugin", function(require, exports, module) {
 var exec = require('cordova/exec');
 var PLUGIN_NAME = 'JGVerificationPlugin'
-
 
 var JGVerificationPlugin = {
     /**
@@ -176,7 +174,3 @@ var JGVerificationPlugin = {
 };
 
 module.exports = JGVerificationPlugin
-
-
-
-});
