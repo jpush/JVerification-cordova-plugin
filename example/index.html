@@ -23,8 +23,8 @@
     <meta charset="UTF-8">
     <script type="text/javascript">
         function onDeviceReady() {
-            JVerificationPlugin.setDebugMode(true);
-            JVerificationPlugin.init();
+            JGJVerificationPlugin.setDebugMode(true);
+            JGJVerificationPlugin.init();
         }
         function onLoad() {
             document.addEventListener("deviceready", onDeviceReady, false);
@@ -33,7 +33,7 @@
         
         function btAction(tagid){
             
-            JVerificationPlugin.dismissLoginAuth()
+            JGJVerificationPlugin.dismissLoginAuth()
 
         }
 
@@ -78,7 +78,7 @@
 
                 json = JSON.stringify(json);
                 // alert(json);
-                JVerificationPlugin.setCustomUIWithConfig(json);
+                JGJVerificationPlugin.setCustomUIWithConfig(json);
             }else if("iOS"==device.platform){
                 var c = 0xff000000;
                 // var json = "{\"navColor\":"+c+"}";
@@ -181,7 +181,7 @@
 
                 json = JSON.stringify(json);
 <!--                 alert(json);-->
-                JVerificationPlugin.setCustomUIWithConfig(json);
+JGJVerificationPlugin.setCustomUIWithConfig(json);
             }
         }
     </script>
@@ -190,12 +190,12 @@
 <div class="app">
     <h1>Apache Cordova</h1>
 </div>
-<button class="bt" onclick="JVerificationPlugin.loginAuth(true,function(msg){alert(msg);})">loginAuth</button>
-<button class="bt" onclick="JVerificationPlugin.isInitSuccess(function(msg){alert(msg);})">isInitSuccess</button>
-<button class="bt" onclick="JVerificationPlugin.checkVerifyEnable(function(msg){alert(msg);})">checkVerifyEnable</button>
-<button class="bt" onclick="JVerificationPlugin.getToken(3000,function(msg){alert(msg);})">getToken</button>
-<button class="bt" onclick="JVerificationPlugin.preLogin(3000,function(msg){alert(msg);})">preLogin</button>
-<button class="bt" onclick="JVerificationPlugin.dismissLoginAuth()">dismissLoginAuth</button>
+<button class="bt" onclick="JGJVerificationPlugin.loginAuth(true,function(msg){alert(msg);})">loginAuth</button>
+<button class="bt" onclick="JGJVerificationPlugin.isInitSuccess(function(msg){alert(msg);})">isInitSuccess</button>
+<button class="bt" onclick="JGJVerificationPlugin.checkVerifyEnable(function(msg){alert(msg);})">checkVerifyEnable</button>
+<button class="bt" onclick="JGJVerificationPlugin.getToken(3000,function(msg){alert(msg);})">getToken</button>
+<button class="bt" onclick="JGJVerificationPlugin.preLogin(3000,function(msg){alert(msg);})">preLogin</button>
+<button class="bt" onclick="JGJVerificationPlugin.dismissLoginAuth()">dismissLoginAuth</button>
 <button class="bt" onclick="javascript:setCustomUIWithConfig()">setCustomUIWithConfig</button>
 <script type="text/javascript" src="cordova.js"></script>
 </body>

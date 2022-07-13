@@ -5,7 +5,7 @@
 //  Created by 韦瑞杨 on 2019/7/15.
 //
 
-#import "JVerificationPlugin.h"
+#import "JGJVerificationPlugin.h"
 #import <Cordova/CDVPlugin.h>
 //引入JVERIFICATIONService.h头文件
 #import "JVERIFICATIONService.h"
@@ -20,7 +20,7 @@
 
 - (void)init:(CDVInvokedUrlCommand*)command
 {
-    NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"JVerificationConfig" ofType:@"plist"];
+    NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"JGJVerificationPlugin" ofType:@"plist"];
     NSMutableDictionary *dataDic = [[NSMutableDictionary alloc]initWithContentsOfFile:plistPath];
 //    NSLog(@"%@",dataDic);//直接打印数据
     

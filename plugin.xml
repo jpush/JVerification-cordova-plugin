@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin xmlns:android="http://schemas.android.com/apk/res/android"
-    id="jgnpm-jverification-cordova-plugin" version="1.3.5"
+    id="jgnpm-jverification-cordova-plugin" version="1.3.6"
     xmlns="http://apache.org/cordova/ns/plugins/1.0">
     <name>@jgnpm-JVerification-cordova-plugin</name>
 
@@ -25,12 +25,12 @@
         </config-file>
 
         <header-file src="src/ios/JVERIFICATIONService.h"/>
-        <header-file src="src/ios/JVerificationPlugin.h"/>
-        <source-file src="src/ios/JVerificationPlugin.m"/>
+        <header-file src="src/ios/JGVerificationPlugin.h"/>
+        <source-file src="src/ios/JGVerificationPlugin.m"/>
         <source-file src="src/ios/jverification-ios-2.7.6.a" framework="true" />
 
-        <resource-file src="src/ios/JVerificationConfig.plist" />
-        <resource-file src="src/ios/JVerificationResource.bundle" />
+        <resource-file src="src/ios/JGVerificationPlugin.plist" />
+        <resource-file src="src/ios/JGVerificationResource.bundle" />
 
         <framework src="src/ios/TYRZUISDK.framework" custom="true" />
         <framework src="src/ios/EAccountApiSDK.framework" custom="true" />
@@ -60,7 +60,7 @@
         <framework src="libsqlite3.tbd" />
 
 
-        <config-file target="*JVerificationConfig.plist" parent="Appkey">
+        <config-file target="*JGJVerificationPlugin.plist" parent="Appkey">
           <string>$APP_KEY</string>
         </config-file>
 
