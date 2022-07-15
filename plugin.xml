@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin xmlns:android="http://schemas.android.com/apk/res/android"
-    id="jgnpm-jverification-cordova-plugin" version="1.4.2"
+    id="jgnpm-jverification-cordova-plugin" version="1.4.3"
     xmlns="http://apache.org/cordova/ns/plugins/1.0">
     <name>@jgnpm-JVerification-cordova-plugin</name>
 
@@ -30,7 +30,7 @@
         <source-file src="src/ios/jverification-ios-2.7.6.a" framework="true" />
 
         <resource-file src="src/ios/JGVerificationPlugin.plist" />
-        <resource-file src="src/ios/JGVerificationResource.bundle" />
+        <resource-file src="src/ios/JVerificationResource.bundle" />
 
         <framework src="src/ios/TYRZUISDK.framework" custom="true" />
         <framework src="src/ios/EAccountApiSDK.framework" custom="true" />
