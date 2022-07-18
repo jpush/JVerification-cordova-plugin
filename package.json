@@ -1,6 +1,6 @@
 {
   "name": "jgnpm-jverification-cordova-plugin",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "jgnpm-JVerification-cordova-plugin",
   "cordova": {
     "id": "jgnpm-jverification-cordova-plugin",

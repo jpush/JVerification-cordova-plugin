@@ -129,6 +129,30 @@
 |windowCloseBtnConstraints|[float,float,float,float]|弹窗close按钮布局(窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口宽度，窗口高度)
 |windowCloseBtnHorizontalConstraints|[float,float,float,float]|弹窗close按钮 横屏布局(窗口相对屏幕中心的x轴偏移量，窗口相对屏幕中心的y轴偏移量，窗口宽度，窗口高度),横屏下优先级高于windowCloseBtnConstraints|
 
++ 自定义控件
+
+|参数名称|参数类型|参数说明|
+|:-----:|:----:|:-----:|
+|customView|NSString|自定义控件数组|
+|widgetType|String|控件类型Buttn/Label|
+|widgetId| String |控件的标识，用于回调接口的辨识|
+|widgetLeft| String |控件的位置距离父界面的左距离|
+|widgetTop| String |控件的位置距离父界面的上距离|
+|widgetWidth| String |控件的宽|
+|widgetHeight| String |控件的高|
+|widgetTitle| String |按钮的标题|
+|widgetTitleFontSize| String |按钮的标题的字体大小|
+|widgetTitleFontColor| String |按钮的标题的字体颜色|
+|widgetText| String |标签的文字内容|
+|widgetTextFontSize| String |标签的文字大小|
+|widgetTextFontColor| String |标签的文字颜色|
+|widgetTextFontAlignment| String |标签的文字对齐方式left/center/right|
+|widgetBackgroundColor| String |控件的背景颜色|
+|widgetNormalImage| String |按钮的默认背景图片|
+|widgetDisabledImage| String |按钮的Disable背景图片|
+|widgetHighlightedImage| String |按钮的Highlight背景图片|
+
+
 ![JVerification](https://docs.jiguang.cn/jverification/image/cutomeUI_description.png)
 
 ##JVMobileUIConfig类

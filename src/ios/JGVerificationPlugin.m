@@ -353,8 +353,8 @@ UIImage *imageFromWWWImg(NSString*imageName){
                         if ([[customViewDict allKeys] containsObject:@"widgetWidth"]) {
                             w = [customViewDict[@"widgetWidth"] floatValue];
                         }
-                        if ([[customViewDict allKeys] containsObject:@"widgetWidth"]) {
-                            h = [customViewDict[@"widgetWidth"] floatValue];
+                        if ([[customViewDict allKeys] containsObject:@"widgetHeight"]) {
+                            h = [customViewDict[@"widgetHeight"] floatValue];
                         }
                         [button setFrame:CGRectMake(x,y,w,h)];
                         if ([[customViewDict allKeys] containsObject:@"widgetTitle"]) {
@@ -366,20 +366,20 @@ UIImage *imageFromWWWImg(NSString*imageName){
                             [button.titleLabel setFont:[UIFont systemFontOfSize:widgetTitleFontSize]];
                         }
                         if ([[customViewDict allKeys] containsObject:@"widgetTitleFontColor"]) {
-                            UIColor *widgetTitleFontColor = UIColorFromRGBValue([customViewDict[@""] intValue]) ;
-                            [button.titleLabel setTextColor:widgetTitleFontColor];
+                            UIColor *widgetTitleFontColor = UIColorFromRGBValue([customViewDict[@"widgetTitleFontColor"] intValue]) ;
+                            [button setTitleColor:widgetTitleFontColor forState:UIControlStateNormal];
                         }
                         if ([[customViewDict allKeys] containsObject:@"widgetNormalImage"]) {
                             UIImage *widgetNormalImage = imageFromWWWImg(customViewDict[@"widgetNormalImage"]) ;
-                            [button setImage:widgetNormalImage forState:UIControlStateNormal];
+                            [button setBackgroundImage:widgetNormalImage forState:UIControlStateNormal];
                         }
                         if ([[customViewDict allKeys] containsObject:@"widgetDisabledImage"]) {
                             UIImage *widgetDisabledImage = imageFromWWWImg(customViewDict[@"widgetDisabledImage"]) ;
-                            [button setImage:widgetDisabledImage forState:UIControlStateDisabled];
+                            [button setBackgroundImage:widgetDisabledImage forState:UIControlStateDisabled];
                         }
                         if ([[customViewDict allKeys] containsObject:@"widgetHighlightedImage"]) {
                             UIImage *widgetHighlightedImage = imageFromWWWImg(customViewDict[@"widgetHighlightedImage"]) ;
-                            [button setImage:widgetHighlightedImage forState:UIControlStateHighlighted];
+                            [button setBackgroundImage:widgetHighlightedImage forState:UIControlStateHighlighted];
                         }
                         if ([[customViewDict allKeys] containsObject:@"widgetBackgroundColor"]) {
                             UIColor *widgetBackgroundColor = UIColorFromRGBValue([customViewDict[@"widgetBackgroundColor"] intValue]) ;
@@ -407,8 +407,8 @@ UIImage *imageFromWWWImg(NSString*imageName){
                         if ([[customViewDict allKeys] containsObject:@"widgetWidth"]) {
                             w = [customViewDict[@"widgetWidth"] floatValue];
                         }
-                        if ([[customViewDict allKeys] containsObject:@"widgetWidth"]) {
-                            h = [customViewDict[@"widgetWidth"] floatValue];
+                        if ([[customViewDict allKeys] containsObject:@"widgetHeight"]) {
+                            h = [customViewDict[@"widgetHeight"] floatValue];
                         }
                         [label setFrame:CGRectMake(x,y,w,h)];
                         if ([[customViewDict allKeys] containsObject:@"widgetText"]) {
