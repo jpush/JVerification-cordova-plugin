@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin xmlns:android="http://schemas.android.com/apk/res/android"
-    id="jgnpm-jverification-cordova-plugin" version="1.4.4"
+    id="jgnpmplus-jverification-cordova-plugin" version="2.0.0"
     xmlns="http://apache.org/cordova/ns/plugins/1.0">
-    <name>@jgnpm-JVerification-cordova-plugin</name>
+    <name>@jgnpmplus-JVerification-cordova-plugin</name>
 
     <!-- dependencies -->
     <dependency id="cordova-plugin-device" />
