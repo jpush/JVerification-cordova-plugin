@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin xmlns:android="http://schemas.android.com/apk/res/android"
-    id="jgnpmplus-jverification-cordova-plugin" version="2.0.0"
+    id="jgnpmplus-jverification-cordova-plugin" version="2.0.1"
     xmlns="http://apache.org/cordova/ns/plugins/1.0">
     <name>@jgnpmplus-JVerification-cordova-plugin</name>
 
