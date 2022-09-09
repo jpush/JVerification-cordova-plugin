@@ -1,0 +1,8 @@
+<resources>
+    <string name="gt4_device_not_supported">不支持的 WebView 组件</string>
+    <string name="gt4_parameter_config_error">参数不合法</string>
+    <string name="gt4_user_cancel">验证会话已取消</string>
+    <string name="gt4_web_callback_error">加载遇到一点麻烦</string>
+    <string name="gt4_web_view_load_error">网络错误</string>
+    <string name="gt4_web_view_ssl_error">证书错误</string>
+</resources>

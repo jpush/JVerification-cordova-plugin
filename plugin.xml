@@ -99,22 +99,12 @@
 
         <config-file parent="/manifest/application" target="AndroidManifest.xml">
 
-            <!-- since 2.0.0 optional 可选项，使用一键登录功能必须添加  -->
-            <!-- since 2.1.1 optional 可选项，通过screenOrientation设置授权页面横竖屏展示  -->
             <activity
-                    android:name="com.cmic.sso.sdk.activity.OAuthActivity"
-                    android:configChanges="orientation|keyboardHidden|screenSize"
-                    android:screenOrientation="unspecified"
-                    android:launchMode="singleTop">
-            </activity>
-            <!-- since 2.0.0 optional 可选项，使用一键登录功能必须添加  -->
-            <!-- since 2.1.1 optional 可选项，通过screenOrientation设置授权页面横竖屏展示  -->
-            <activity
-                    android:name="com.cmic.sso.sdk.activity.LoginAuthActivity"
-                    android:theme="@style/ActivityDialogStyle"
-                    android:configChanges="orientation|keyboardHidden|screenSize"
-                    android:screenOrientation="unspecified"
-                    android:launchMode="singleTop">
+                android:name="com.cmic.gen.sdk.view.GenLoginAuthActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:theme="@android:style/Theme.Holo.NoActionBar"
+                android:screenOrientation="unspecified"
+                android:launchMode="singleTop">
             </activity>
             <!-- since 2.0.0 optional 可选项，使用一键登录功能必须添加  -->
             <!-- since 2.1.1 optional 可选项，通过screenOrientation设置授权页面横竖屏展示  -->
@@ -138,12 +128,24 @@
         <resource-file src="src/android/libs/x86/libCtaApiLib.so" target="jniLibs/x86/libCtaApiLib.so"/>
         <resource-file src="src/android/libs/x86_64/libCtaApiLib.so" target="jniLibs/x86_64/libCtaApiLib.so"/>
 
-        <lib-file src="src/android/libs/jverification-android-release-2.6.3.jar" />
+        <resource-file src="src/android/libs/arm64-v8a/libquicklogin.so" target="jniLibs/arm64-v8a/libquicklogin.so"/>
+        <resource-file src="src/android/libs/armeabi/libquicklogin.so" target="jniLibs/armeabi/libquicklogin.so"/>
+        <resource-file src="src/android/libs/armeabi-v7a/libquicklogin.so" target="jniLibs/armeabi-v7a/libquicklogin.so"/>
+        <resource-file src="src/android/libs/x86/libquicklogin.so" target="jniLibs/x86/libquicklogin.so"/>
+        <resource-file src="src/android/libs/x86_64/libquicklogin.so" target="jniLibs/x86_64/libquicklogin.so"/>
+
+        <resource-file src="src/android/libs/arm64-v8a/libgtcore.so" target="jniLibs/arm64-v8a/libgtcore.so"/>
+        <resource-file src="src/android/libs/armeabi/libgtcore.so" target="jniLibs/armeabi/libgtcore.so"/>
+        <resource-file src="src/android/libs/armeabi-v7a/libgtcore.so" target="jniLibs/armeabi-v7a/libgtcore.so"/>
+        <resource-file src="src/android/libs/x86/libgtcore.so" target="jniLibs/x86/libgtcore.so"/>
+        <resource-file src="src/android/libs/x86_64/libgtcore.so" target="jniLibs/x86_64/libgtcore.so"/>
+
+        <lib-file src="src/android/libs/jverification-android-release-2.9.3.jar" />
         <source-file src="src/android/cn/jiguang/cordova/verification/JGVerificationPlugin.java"
             target-dir="src/cn/jiguang/cordova/verification/" />
             
         <resource-file src="src/android/res/anim/umcsdk_anim_loading.xml"  target="res/anim/umcsdk_anim_loading.xml"/>
-
+        <resource-file src="src/android/res/values/strings.xml"  target="res/values/strings.xml"/>
         <resource-file src="src/android/res/values/styles.xml"  target="res/values/styles.xml"/>
         <resource-file src="src/android/res/drawable/dialog_bg.xml"  target="res/drawable/dialog_bg.xml"/>
         <resource-file src="src/android/res/drawable/umcsdk_get_smscode_btn_bg.xml"  target="res/drawable/umcsdk_get_smscode_btn_bg.xml"/>
@@ -167,5 +169,8 @@
         <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_uncheck_image.png"  target="res/drawable-xxhdpi/umcsdk_uncheck_image.png"/>
 
         <resource-file src="src/android/assets/cucc/host_cucc.properties"  target="assets/cucc/host_cucc.properties"/>
+        <resource-file src="src/android/assets/gt4.js"  target="assets/gt4.js"/>
+        <resource-file src="src/android/assets/gt4-index.html"  target="assets/gt4-index.html"/>
+        <resource-file src="src/android/assets/gt4-loading.gif"  target="assets/gt4-loading.gif"/>
     </platform>
 </plugin>
