@@ -38,7 +38,6 @@ import cn.jiguang.verifysdk.api.PreLoginListener;
 import cn.jiguang.verifysdk.api.RequestCallback;
 import cn.jiguang.verifysdk.api.VerifyListener;
 
-import static com.sdk.base.module.manager.SDKManager.getContext;
 
 public class JGVerificationPlugin extends CordovaPlugin {
     private static final String TAG = "JGVerificationPlugin";
@@ -335,7 +334,7 @@ public class JGVerificationPlugin extends CordovaPlugin {
     private static final String setPrivacyState = "setPrivacyState";
     private static final String setPrivacyOffsetX = "setPrivacyOffsetX";
     private static final String setPrivacyTextCenterGravity = "setPrivacyTextCenterGravity";
-    private static final String setPrivacyText = "setPrivacyText";
+    private static final String appPrivacys = "appPrivacys";
     private static final String setPrivacyTextSize = "setPrivacyTextSize";
     private static final String setPrivacyTopOffsetY = "setPrivacyTopOffsetY";
     private static final String setPrivacyCheckboxHidden = "setPrivacyCheckboxHidden";
@@ -761,9 +760,17 @@ public class JGVerificationPlugin extends CordovaPlugin {
             uiConfigBuilder.setPrivacyOffsetX(jsonObject.getInt(key));
         } else if (setPrivacyTextCenterGravity.equals(key)) {
             uiConfigBuilder.setPrivacyTextCenterGravity(jsonObject.getBoolean(key));
-        } else if (setPrivacyText.equals(key)) {
-            JSONArray jsonArray = jsonObject.getJSONArray(key);
-            uiConfigBuilder.setPrivacyText(jsonArray.getString(0), jsonArray.getString(1), jsonArray.getString(2), jsonArray.getString(3));
+        } else if (appPrivacys.equals(key)) {
+            List<PrivacyBean> beanArrayList = new ArrayList<>();
+            JSONArray appPrivacyJsonArray = jsonObject.getJSONArray(key);
+            for(int i=0;i<appPrivacyJsonArray.length();i++){
+                JSONObject appPrivacyItem = appPrivacyJsonArray.getJSONObject(i);
+                String name = appPrivacyItem.getString("appPrivacyName");
+                String url = appPrivacyItem.getString("appPrivacyUrl");
+                String separator = appPrivacyItem.getString("appPrivacySeparator");
+                beanArrayList.add(new PrivacyBean(name, url, separator));
+            }
+            uiConfigBuilder.setPrivacyNameAndUrlBeanList(beanArrayList);
         } else if (setPrivacyTextSize.equals(key)) {
             uiConfigBuilder.setPrivacyTextSize(jsonObject.getInt(key));
         } else if (setPrivacyTopOffsetY.equals(key)) {
