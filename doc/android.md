@@ -94,8 +94,7 @@
 
 |方法|参数类型|说明|
 |:-----:|:----:|:----:|
-|setAppPrivacyOne|String,String|设置开发者隐私条款1名称和URL(名称，url)|
-|setAppPrivacyTwo|String,String|设置开发者隐私条款2名称和URL(名称，url)|
+|setPrivacyNameAndUrlBeanList(List<PrivacyBean>)|PrivacyBean(String name, String url, String separator)|PrivacyBean传参；参数1为：设置开发者隐私条款名称；参数2为：开发者隐私条款URL；参数3为：连接符号。 since 2.7.4|
 |setAppPrivacyColor|int,int|设置隐私条款名称颜色(基础文字颜色，协议文字颜色)|
 |setPrivacyOffsetY|int|设置隐私条款相对于授权页面底部下边缘y偏移|
 |setCheckedImgPath|String|设置复选框选中时图片|
