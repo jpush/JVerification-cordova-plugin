@@ -94,7 +94,6 @@
 
 |方法|参数类型|说明|
 |:-----:|:----:|:----:|
-|appPrivacys|String,String, String|设置开发者自定义隐私协议。参数1为：隐私条款名称；参数2为：隐私条款URL；参数3为：连接符号。 since 2.7.4|
 |setAppPrivacyColor|int,int|设置隐私条款名称颜色(基础文字颜色，协议文字颜色)|
 |setPrivacyOffsetY|int|设置隐私条款相对于授权页面底部下边缘y偏移|
 |setCheckedImgPath|String|设置复选框选中时图片|
@@ -111,6 +110,23 @@
 |setPrivacyTextWidth|int|设置隐私条款文字栏宽度。since 2.5.0|
 |setPrivacyTextBold|boolean|设置隐私条款文字字体是否加粗。since 2.5.4|
 |setPrivacyUnderlineText|boolean|设置隐私条款文字字体是否加下划线。since 2.5.4|
+|appPrivacys|json array|设置开发者自定义隐私协议。<br>appPrivacyName：隐私条款名称；<br>appPrivacyUrl：隐私条款URL；<br>appPrivacySeparator：连接符号。<br>可参考下方《隐私协议设置示例》。since 2.7.4 |
++ 隐私协议设置示例
+```
+appPrivacys:[
+    {
+        "appPrivacyName":"自定义条款1",
+        "appPrivacyUrl":"https://www.jiguang.cn/about",
+        "appPrivacySeparator":"、"
+    },
+    {
+        "appPrivacyName":"自定义条款2",
+        "appPrivacyUrl":"https://www.jiguang.cn/about",
+        "appPrivacySeparator":"、"
+    }
+]
+```
+
 
 + 授权页隐私协议web页面
 
