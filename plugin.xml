@@ -133,7 +133,7 @@
         <resource-file src="src/android/libs/x86/libgtcore.so" target="jniLibs/x86/libgtcore.so"/>
         <resource-file src="src/android/libs/x86_64/libgtcore.so" target="jniLibs/x86_64/libgtcore.so"/>
 
-        <lib-file src="src/android/libs/jverification-android-release-2.9.7.jar" />
+        <lib-file src="src/android/libs/jverification-android-not_support_dynamic-release-2.9.7.jar" />
         <source-file src="src/android/cn/jiguang/cordova/verification/JGVerificationPlugin.java"
             target-dir="src/cn/jiguang/cordova/verification/" />
             
