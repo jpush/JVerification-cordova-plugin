@@ -47,10 +47,6 @@
         <framework src="MobileCoreServices.framework" weak="true" />
         <framework src="account_verify_sdk_core.framework" weak="true" />
         <framework src="AVFoundation.framework" weak="true" />
-        <framework src="TYRZUISDK.xcframework" weak="true" />
-        <framework src="account_login_sdk_noui_core.framework" weak="true" />
-        <framework src="EAccountApiSDK.framework" weak="true" />
-        <framework src="Network.framework" weak="true" />
         <framework src="libresolv.tbd" />
         <framework src="libz.tbd" />
         <framework src="libc++.1.tbd" />
