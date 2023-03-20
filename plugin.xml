@@ -125,11 +125,11 @@
         <resource-file src="src/android/libs/x86/libCtaApiLib.so" target="jniLibs/x86/libCtaApiLib.so"/>
         <resource-file src="src/android/libs/x86_64/libCtaApiLib.so" target="jniLibs/x86_64/libCtaApiLib.so"/>
 
-        <resource-file src="src/android/libs/arm64-v8a/libquicklogin.so" target="jniLibs/arm64-v8a/libquicklogin.so"/>
+        <!-- <resource-file src="src/android/libs/arm64-v8a/libquicklogin.so" target="jniLibs/arm64-v8a/libquicklogin.so"/>
         <resource-file src="src/android/libs/armeabi/libquicklogin.so" target="jniLibs/armeabi/libquicklogin.so"/>
         <resource-file src="src/android/libs/armeabi-v7a/libquicklogin.so" target="jniLibs/armeabi-v7a/libquicklogin.so"/>
         <resource-file src="src/android/libs/x86/libquicklogin.so" target="jniLibs/x86/libquicklogin.so"/>
-        <resource-file src="src/android/libs/x86_64/libquicklogin.so" target="jniLibs/x86_64/libquicklogin.so"/>
+        <resource-file src="src/android/libs/x86_64/libquicklogin.so" target="jniLibs/x86_64/libquicklogin.so"/> -->
 
         <resource-file src="src/android/libs/arm64-v8a/libgtcore.so" target="jniLibs/arm64-v8a/libgtcore.so"/>
         <resource-file src="src/android/libs/armeabi/libgtcore.so" target="jniLibs/armeabi/libgtcore.so"/>
@@ -137,7 +137,7 @@
         <resource-file src="src/android/libs/x86/libgtcore.so" target="jniLibs/x86/libgtcore.so"/>
         <resource-file src="src/android/libs/x86_64/libgtcore.so" target="jniLibs/x86_64/libgtcore.so"/>
 
-        <lib-file src="src/android/libs/jverification-android-release-2.9.3.jar" />
+        <lib-file src="src/android/libs/jverification-android-release-2.9.7.jar" />
         <source-file src="src/android/cn/jiguang/cordova/verification/JGVerificationPlugin.java"
             target-dir="src/cn/jiguang/cordova/verification/" />
             
@@ -165,9 +165,9 @@
         <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_toast_bg.png"  target="res/drawable-xxhdpi/umcsdk_toast_bg.png"/>
         <resource-file src="src/android/res/drawable-xxhdpi/umcsdk_uncheck_image.png"  target="res/drawable-xxhdpi/umcsdk_uncheck_image.png"/>
 
-        <resource-file src="src/android/assets/cucc/host_cucc.properties"  target="assets/cucc/host_cucc.properties"/>
+        <!-- <resource-file src="src/android/assets/cucc/host_cucc.properties"  target="assets/cucc/host_cucc.properties"/>
         <resource-file src="src/android/assets/gt4.js"  target="assets/gt4.js"/>
         <resource-file src="src/android/assets/gt4-index.html"  target="assets/gt4-index.html"/>
-        <resource-file src="src/android/assets/gt4-loading.gif"  target="assets/gt4-loading.gif"/>
+        <resource-file src="src/android/assets/gt4-loading.gif"  target="assets/gt4-loading.gif"/> -->
     </platform>
 </plugin>
