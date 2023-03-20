@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#define JVER_VERSION_NUMBER 2.7.6
+#define JVER_VERSION_NUMBER 2.9.5
 
 
 /**
@@ -86,9 +86,11 @@ typedef NS_ENUM(NSInteger,JVVerAlignment){
 
 /*----------------------------------------授权页面-----------------------------------*/
 
+#pragma mark --导航栏
 
 //MARK:导航栏*************
-
+/**运营商类型*/
+@property(nonatomic,strong)NSString *operatorType;
 /**导航栏颜色*/
 @property (nonatomic,strong) UIColor *navColor;
 /**授权页navigation bar style，已废弃。建议使用preferredStatusBarStyle控制状态栏。preferredStatusBarStyle默认为UIStatusBarStyleDefault,当barStyle的效果和preferredStatusBarStyle冲突时，barStyle的效果会失效。 */
@@ -122,13 +124,17 @@ typedef NS_ENUM(NSInteger,JVVerAlignment){
 @property (nonatomic,assign) BOOL prefersStatusBarHidden;
 
 
-
+#pragma mark --图片设置
 
 //MARK:图片设置************
 /**授权界面背景图片*/
 @property (nonatomic,strong) UIImage *authPageBackgroundImage;
 /**授权界面背景gif资源路径，与authPageBackgroundImage属性不可生效*/
 @property (nonatomic,copy) NSString *authPageGifImagePath;
+/**授权界面背景视频资源路径，与authPageBackgroundImage属性不可生效*/
+@property (nonatomic,copy) NSString *authPageVideoPath;
+/**授权界面背景视频单帧默认图片资源路径，与authPageBackgroundImage属性不可生效*/
+@property (nonatomic,copy) NSString *authPageVideoPlaceHolderImageName;
 /**LOGO图片*/
 @property (nonatomic,strong) UIImage *logoImg;
 /**LOGO图片宽度*/
@@ -143,6 +149,8 @@ typedef NS_ENUM(NSInteger,JVVerAlignment){
 @property (nonatomic, copy) NSArray <JVLayoutConstraint*>* logoHorizontalConstraints;
 /**LOGO图片隐藏*/
 @property (nonatomic,assign) BOOL logoHidden;
+
+#pragma mark -- 登录按钮
 
 //MARK:登录按钮************
 
@@ -164,6 +172,8 @@ typedef NS_ENUM(NSInteger,JVVerAlignment){
  */
 @property (nonatomic,copy) NSArray *logBtnImgs;
 
+#pragma mark -- 号码框设置
+
 //MARK:号码框设置************
 
 /**手机号码字体颜色*/
@@ -179,8 +189,10 @@ typedef NS_ENUM(NSInteger,JVVerAlignment){
 /*号码栏 横屏布局,横屏时优先级高于numberConstraints*/
 @property (nonatomic, copy) NSArray <JVLayoutConstraint*>* numberHorizontalConstraints;
 
-//MARK:隐私条款************
 
+#pragma mark -- 隐私条款
+
+//MARK:隐私条款************
 /**复选框未选中时图片*/
 @property (nonatomic,strong) UIImage *uncheckedImg;
 /**复选框选中时图片*/
@@ -246,6 +258,9 @@ typedef NS_ENUM(NSInteger,JVVerAlignment){
 @property (nonatomic,assign) BOOL privacyState;
 /*隐私条约Label的垂直对齐方式*/
 @property (nonatomic,assign) JVVerAlignment textVerAlignment;
+/*隐私协议点击 是否用浏览器打开*/
+///2.9.4+生效
+@property (nonatomic,assign) BOOL openPrivacyInBrowser;
 /*
  当自定义Alert view,当隐私条款未选中时,点击登录按钮时回调
  当此参数存在时,未选中隐私条款的情况下，登录按钮可以被点击
@@ -289,6 +304,7 @@ typedef NS_ENUM(NSInteger,JVVerAlignment){
 @property (nonatomic,copy) void(^customLoadingViewBlock)(UIView * View);
 
 
+#pragma mark -- 弹窗样式设置
 
 /*弹窗样式设置*/
 /*是否弹窗，默认no*/
@@ -303,7 +319,8 @@ typedef NS_ENUM(NSInteger,JVVerAlignment){
 @property (nonatomic, copy) NSArray <JVLayoutConstraint*>* windowConstraints;
 /*弹窗横屏布局，横屏下优先级高于windowConstraints*/
 @property (nonatomic, copy) NSArray <JVLayoutConstraint*>* windowHorizontalConstraints;
-
+/*是否在未勾选隐私协议的情况下 弹窗提示窗口*/
+@property (nonatomic, assign) BOOL isAlertPrivacyVC;
 
 /*弹窗close按钮图片 @[普通状态图片，高亮状态图片]*/
 @property (nonatomic, copy) NSArray <UIImage *>*windowCloseBtnImgs;
@@ -322,6 +339,8 @@ typedef NS_ENUM(NSInteger,JVVerAlignment){
 /*设置进入授权页的屏幕方向。不支持UIInterfaceOrientationPortraitUpsideDown
  注意:当授权页为弹框样式时,参数无效，屏幕方向由当前视图控制器控制 */
 @property (nonatomic, assign) UIInterfaceOrientation orientation;
+
+#pragma mark -- 协议页导航栏设置
 
 /**协议页导航栏背景颜色*/
 @property (nonatomic, strong) UIColor *agreementNavBackgroundColor;
@@ -353,11 +372,8 @@ typedef NS_ENUM(NSInteger,JVVerAlignment){
  2、用户点击授权页关闭按钮，关闭授权页
  */
 @property (nonatomic, assign) BOOL dismissAnimationFlag;
+
 @end
-
-
-
-
 
 DEPRECATED_MSG_ATTRIBUTE("Please use JVUIConfig") @interface JVMobileUIConfig : JVUIConfig
 @end
@@ -365,10 +381,6 @@ DEPRECATED_MSG_ATTRIBUTE("Please use JVUIConfig") @interface JVUnicomUIConfig : 
 @end
 DEPRECATED_MSG_ATTRIBUTE("Please use JVUIConfig") @interface JVTelecomUIConfig : JVUIConfig
 @end
-
-
-
-
 
 
 @interface JVAuthConfig : NSObject
@@ -483,6 +495,7 @@ DEPRECATED_MSG_ATTRIBUTE("Please use JVUIConfig") @interface JVTelecomUIConfig :
 */
 + (void)dismissLoginControllerAnimated: (BOOL)flag completion: (void (^)(void))completion;
 
+
 /*!
  * @abstract 设置是否打印sdk产生的Debug级log信息, 默认为NO(不打印log)
  *
@@ -518,6 +531,7 @@ DEPRECATED_MSG_ATTRIBUTE("Please use JVUIConfig") @interface JVTelecomUIConfig :
 */
 + (void)customUIWithConfig:(JVUIConfig *)UIConfig customViews:(void(^)(UIView *customAreaView))customViewsBlk;
 
+
 /**
  *  获取短信验证码 （最小间隔时间内只能调用一次）
  *  v2.6.0之后新增接口
@@ -538,6 +552,14 @@ DEPRECATED_MSG_ATTRIBUTE("Please use JVUIConfig") @interface JVTelecomUIConfig :
  */
 + (void)setGetCodeInternal:(NSTimeInterval)intervalTime;
 
+
+/*!
+ * @abstract 设置SDK地理位置权限开关
+ *
+ * @discussion 关闭地理位置之后，pushSDK地理围栏的相关功能将受到影响，默认是开启。
+ *
+ */
++ (void)setLocationEanable:(BOOL)isEanble;
 
 @end
 

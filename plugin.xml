@@ -27,15 +27,13 @@
         <header-file src="src/ios/JVERIFICATIONService.h"/>
         <header-file src="src/ios/JGVerificationPlugin.h"/>
         <source-file src="src/ios/JGVerificationPlugin.m"/>
-        <source-file src="src/ios/jverification-ios-2.7.6.a" framework="true" />
+        <source-file src="src/ios/jverification-ios-2.9.5.a" framework="true" />
 
         <resource-file src="src/ios/JGVerificationPlugin.plist" />
         <resource-file src="src/ios/JVerificationResource.bundle" />
 
-        <framework src="src/ios/TYRZUISDK.framework" custom="true" />
+        <framework src="src/ios/TYRZUISDK.xcframework" custom="true" />
         <framework src="src/ios/EAccountApiSDK.framework" custom="true" />
-        <framework src="src/ios/OAuth.framework" custom="true" />
-        <framework src="src/ios/account_verify_sdk_core.framework" custom="true" />
         <framework src="src/ios/account_login_sdk_noui_core.framework" custom="true" />
 
         <framework src="AdSupport.framework" weak="true" />
@@ -49,10 +47,9 @@
         <framework src="MobileCoreServices.framework" weak="true" />
         <framework src="account_verify_sdk_core.framework" weak="true" />
         <framework src="AVFoundation.framework" weak="true" />
-        <framework src="TYRZUISDK.framework" weak="true" />
+        <framework src="TYRZUISDK.xcframework" weak="true" />
         <framework src="account_login_sdk_noui_core.framework" weak="true" />
         <framework src="EAccountApiSDK.framework" weak="true" />
-        <framework src="OAuth.framework" weak="true" />
         <framework src="Network.framework" weak="true" />
         <framework src="libresolv.tbd" />
         <framework src="libz.tbd" />
