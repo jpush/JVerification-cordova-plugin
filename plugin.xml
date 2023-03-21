@@ -138,7 +138,7 @@
             target-dir="src/cn/jiguang/cordova/verification/" />
             
         <resource-file src="src/android/res/anim/umcsdk_anim_loading.xml"  target="res/anim/umcsdk_anim_loading.xml"/>
-        <resource-file src="src/android/res/values/strings.xml"  target="res/values/strings.xml"/>
+<!--        <resource-file src="src/android/res/values/strings.xml"  target="res/values/strings.xml"/>-->
         <resource-file src="src/android/res/values/styles.xml"  target="res/values/styles.xml"/>
         <resource-file src="src/android/res/drawable/dialog_bg.xml"  target="res/drawable/dialog_bg.xml"/>
         <resource-file src="src/android/res/drawable/umcsdk_get_smscode_btn_bg.xml"  target="res/drawable/umcsdk_get_smscode_btn_bg.xml"/>
