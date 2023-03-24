@@ -1,5 +1,5 @@
 {
-  "name": "com.jiguang.auth",
+  "name": "pub.kilo.demo",
   "displayName": "HelloCordova",
   "version": "1.0.0",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
@@ -17,7 +17,7 @@
     "cordova-ios": "^6.2.0",
     "cordova-plugin-device": "^2.1.0",
     "cordova-plugin-jcore": "^1.4.4",
-    "jgnpmplus-jverification-cordova-plugin": "^2.0.7"
+    "jgnpmplus-jverification-cordova-plugin": "^2.0.9"
   },
   "cordova": {
     "platforms": [
@@ -26,7 +26,7 @@
     ],
     "plugins": {
       "jgnpmplus-jverification-cordova-plugin": {
-        "APP_KEY": "1b5965ba23557bcf384e0b08",
+        "APP_KEY": "41f3e34b401752a63dbc27cc",
         "CHANNEL": "developer-default"
       }
     }

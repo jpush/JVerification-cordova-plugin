@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin xmlns:android="http://schemas.android.com/apk/res/android"
-    id="jgnpmplus-jverification-cordova-plugin" version="2.0.1"
+    id="jgnpmplus-jverification-cordova-plugin" version="2.0.9"
     xmlns="http://apache.org/cordova/ns/plugins/1.0">
     <name>@jgnpmplus-JVerification-cordova-plugin</name>
 
@@ -27,7 +27,7 @@
         <header-file src="src/ios/JVERIFICATIONService.h"/>
         <header-file src="src/ios/JGVerificationPlugin.h"/>
         <source-file src="src/ios/JGVerificationPlugin.m"/>
-        <source-file src="src/ios/jverification-ios-2.9.5.a" framework="true" />
+        <source-file src="src/ios/jverification-ios-2.9.7.a" framework="true" />
 
         <resource-file src="src/ios/JGVerificationPlugin.plist" />
         <resource-file src="src/ios/JVerificationResource.bundle" />
