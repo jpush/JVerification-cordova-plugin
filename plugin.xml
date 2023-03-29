@@ -95,7 +95,7 @@
             <activity
                 android:name="com.cmic.gen.sdk.view.GenLoginAuthActivity"
                 android:configChanges="orientation|keyboardHidden|screenSize"
-                android:theme="@android:style/Theme.Holo.NoActionBar"
+                android:theme="@style/ActivityDialogStyle"
                 android:screenOrientation="unspecified"
                 android:launchMode="singleTop">
             </activity>
