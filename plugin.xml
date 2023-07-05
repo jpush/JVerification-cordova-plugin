@@ -27,7 +27,7 @@
         <header-file src="src/ios/JVERIFICATIONService.h"/>
         <header-file src="src/ios/JGVerificationPlugin.h"/>
         <source-file src="src/ios/JGVerificationPlugin.m"/>
-        <source-file src="src/ios/jverification-ios-2.9.5.a" framework="true" />
+        <source-file src="src/ios/jverification-ios-3.1.0.a" framework="true" />
 
         <resource-file src="src/ios/JGVerificationPlugin.plist" />
         <resource-file src="src/ios/JVerificationResource.bundle" />
@@ -45,7 +45,6 @@
         <framework src="Security.framework" weak="true" />
         <framework src="CoreGraphics.framework" weak="true" />
         <framework src="MobileCoreServices.framework" weak="true" />
-        <!-- <framework src="account_verify_sdk_core.framework" weak="true" /> -->
         <framework src="AVFoundation.framework" weak="true" />
         <framework src="libresolv.tbd" />
         <framework src="libz.tbd" />

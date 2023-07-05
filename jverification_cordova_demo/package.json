@@ -17,7 +17,7 @@
     "cordova-ios": "^6.2.0",
     "cordova-plugin-device": "^2.1.0",
     "cordova-plugin-jcore": "^1.4.4",
-    "jgnpmplus-jverification-cordova-plugin": "^2.1.0"
+    "jgnpmplus-jverification-cordova-plugin": "^2.1.2"
   },
   "cordova": {
     "platforms": [
