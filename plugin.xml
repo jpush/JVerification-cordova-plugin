@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin xmlns:android="http://schemas.android.com/apk/res/android"
-    id="jgnpmplus-jverification-cordova-plugin" version="2.0.9"
+    id="jgnpmplus-jverification-cordova-plugin" version="2.1.4"
     xmlns="http://apache.org/cordova/ns/plugins/1.0">
     <name>@jgnpmplus-JVerification-cordova-plugin</name>
 
@@ -72,18 +72,14 @@
         <config-file parent="/manifest" target="AndroidManifest.xml">
             <!-- Required  -->
             <uses-permission android:name="android.permission.INTERNET" />
-            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
             <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
             <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-            <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
             <!-- Optional -->
             <uses-permission
                 android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
             <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-            <uses-permission android:name="android.permission.GET_TASKS" />
             <uses-permission android:name="android.permission.VIBRATE" />
             <uses-permission android:name="android.permission.WAKE_LOCK" />
         </config-file>
@@ -126,13 +122,13 @@
         <resource-file src="src/android/libs/x86/libquicklogin.so" target="jniLibs/x86/libquicklogin.so"/>
         <resource-file src="src/android/libs/x86_64/libquicklogin.so" target="jniLibs/x86_64/libquicklogin.so"/> -->
 
-        <resource-file src="src/android/libs/arm64-v8a/libgtcore.so" target="jniLibs/arm64-v8a/libgtcore.so"/>
+        <!-- <resource-file src="src/android/libs/arm64-v8a/libgtcore.so" target="jniLibs/arm64-v8a/libgtcore.so"/>
         <resource-file src="src/android/libs/armeabi/libgtcore.so" target="jniLibs/armeabi/libgtcore.so"/>
         <resource-file src="src/android/libs/armeabi-v7a/libgtcore.so" target="jniLibs/armeabi-v7a/libgtcore.so"/>
         <resource-file src="src/android/libs/x86/libgtcore.so" target="jniLibs/x86/libgtcore.so"/>
-        <resource-file src="src/android/libs/x86_64/libgtcore.so" target="jniLibs/x86_64/libgtcore.so"/>
+        <resource-file src="src/android/libs/x86_64/libgtcore.so" target="jniLibs/x86_64/libgtcore.so"/> -->
 
-        <lib-file src="src/android/libs/jverification-android-not_support_dynamic-release-2.9.7.jar" />
+        <lib-file src="src/android/libs/jverification-android-not_support_dynamic-release-3.1.8.jar" />
         <source-file src="src/android/cn/jiguang/cordova/verification/JGVerificationPlugin.java"
             target-dir="src/cn/jiguang/cordova/verification/" />
             

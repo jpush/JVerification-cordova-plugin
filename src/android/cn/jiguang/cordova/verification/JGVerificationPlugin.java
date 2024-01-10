@@ -126,7 +126,7 @@ public class JGVerificationPlugin extends CordovaPlugin {
         int timeOut = data.getInt(0);
         JVerificationInterface.getToken(mContext, timeOut, new VerifyListener() {
             @Override
-            public void onResult(int code, String content, String operator) {
+            public void onResult(int code, String content, String operator, JSONObject obj) {
                 JSONObject jsonObject = new JSONObject();
                 try {
                     jsonObject.put("code", code);
@@ -150,7 +150,7 @@ public class JGVerificationPlugin extends CordovaPlugin {
         int timeOut = data.getInt(0);
         JVerificationInterface.preLogin(mContext, timeOut, new PreLoginListener() {
             @Override
-            public void onResult(int code, String content) {
+            public void onResult(int code, String content, JSONObject obj) {
                 JSONObject jsonObject = new JSONObject();
                 try {
                     jsonObject.put("code", code);
@@ -190,7 +190,7 @@ public class JGVerificationPlugin extends CordovaPlugin {
         boolean autoFinish = data.getBoolean(0);
         JVerificationInterface.loginAuth(mContext, autoFinish, new VerifyListener() {
             @Override
-            public void onResult(int code, String content, String operator) {
+            public void onResult(int code, String content, String operator, JSONObject obj) {
                 JSONObject jsonObject = new JSONObject();
                 try {
                     jsonObject.put("code", code);
